@@ -1,12 +1,21 @@
 package com.edge.dto;
 
-public class OrderConfimationDTO {
+public class OrderConfirmationDTO {
 	
 	private int orderId;
 	private int auth_code;
 	private double amount;
 	
+	public OrderConfirmationDTO() {
+		
+	}
 	
+	public OrderConfirmationDTO(int orderId, int auth_code, double amount) {
+		super();
+		this.orderId = orderId;
+		this.auth_code = auth_code;
+		this.amount = amount;
+	}
 	public int getOrderId() {
 		return orderId;
 	}

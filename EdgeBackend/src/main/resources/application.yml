@@ -1,0 +1,20 @@
+spring:
+  jackson:
+    serialization:
+      indent-output: true
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/edge_online_db?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: "testUser"
+    password: "123"
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: false
+
+jwt:
+  secret: javainuse
+server:
+  port: 8080

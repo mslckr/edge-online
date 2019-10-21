@@ -2,7 +2,7 @@ package com.edge.dto;
 
 import javax.validation.constraints.NotNull;
 
-public class OrderListDTO {
+public class OrderLineDTO {
 
 	@NotNull
 	private int id;

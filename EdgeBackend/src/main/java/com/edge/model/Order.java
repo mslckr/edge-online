@@ -2,33 +2,65 @@ package com.edge.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="order")
 public class Order implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private long item_id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
+
+	@OneToOne
+	private Item item;
+	
 	private int amount;
-	private int orderlist_id;
+	
+	@ManyToOne
+	@JoinColumn(name="orderline_id")
+	private OrderLine orderline;
+	
 	private boolean complete= false;
 	
-	public Order(long item_id, int amount, int orderlist_id, boolean complete) {
+	public Order() {}
+	
+
+	public Order(long id, Item item, int amount, OrderLine orderline, boolean complete) {
 		super();
-		this.item_id = item_id;
+		this.id = id;
+		this.item = item;
 		this.amount = amount;
-		this.orderlist_id = orderlist_id;
+		this.orderline = orderline;
 		this.complete = complete;
 	}
 
-	public long getItem_id() {
-		return item_id;
+	public Order(Item item, int amount, OrderLine orderline, boolean complete) {
+		super();
+		this.item = item;
+		this.amount = amount;
+		this.orderline = orderline;
+		this.complete = complete;
 	}
 
-	public void setItem_id(long item_id) {
-		this.item_id = item_id;
+	public long getId() {
+		return id;
 	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 
 	public int getAmount() {
 		return amount;
@@ -38,13 +70,6 @@ public class Order implements Serializable{
 		this.amount = amount;
 	}
 
-	public int getOrderlist_id() {
-		return orderlist_id;
-	}
-
-	public void setOrderlist_id(int orderlist_id) {
-		this.orderlist_id = orderlist_id;
-	}
 
 	public boolean isComplete() {
 		return complete;
@@ -57,6 +82,25 @@ public class Order implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
+
+	public Item getItem() {
+		return item;
+	}
+
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+
+	public OrderLine getOrderline() {
+		return orderline;
+	}
+
+
+	public void setOrderline(OrderLine orderline) {
+		this.orderline = orderline;
+	}
 
 }

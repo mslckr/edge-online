@@ -1,6 +1,8 @@
 package com.edge.dto;
 
+
 import javax.validation.constraints.NotNull;
+
 
 public class ProviderDTO {
 	@NotNull
@@ -9,6 +11,17 @@ public class ProviderDTO {
 	private String prov_addr;
 	private String prov_logo;
 	private String prov_link;
+	
+	public ProviderDTO() {}
+	
+	public ProviderDTO(int id, String prov_name, String prov_addr, String prov_logo, String prov_link) {
+		super();
+		this.id = id;
+		this.prov_name = prov_name;
+		this.prov_addr = prov_addr;
+		this.prov_logo = prov_logo;
+		this.prov_link = prov_link;
+	}
 	
 	public int getId() {
 		return id;

@@ -1,33 +1,34 @@
 package com.edge.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Provider")
+@Table(name="provider")
 public class Provider implements Serializable{
 	
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String prov_name;
 	private String prov_addr;
 	private String prov_logo;
 	private String prov_link;
 	
-	public Provider(int id, String prov_name, String prov_addr, String prov_logo, String prov_link) {
-		super();
-		this.id = id;
-		this.prov_name = prov_name;
-		this.prov_addr = prov_addr;
-		this.prov_logo = prov_logo;
-		this.prov_link = prov_link;
-	}
+	@OneToMany(mappedBy="provider", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Item> items;
+	
 
 	public int getId() {
 		return id;
@@ -68,6 +69,17 @@ public class Provider implements Serializable{
 	public void setProv_link(String prov_link) {
 		this.prov_link = prov_link;
 	}
-	
+
+	public Set<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<Item> items) {
+		this.items = items;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }

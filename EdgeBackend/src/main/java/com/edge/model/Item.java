@@ -3,32 +3,38 @@ package com.edge.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="Item")
+@Table(name="item")
 public class Item implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	private String item_name;
+	private String item_cat;
 	private double item_price;
 	private String item_img;
-	
-	@ManyToOne
-	private int prov_id;
+	private int item_rating;
 	private int item_stock;
 	
-	public Item(long id, double item_price, String item_img, int prov_id, int item_stock) {
-		super();
-		this.id = id;
-		this.item_price = item_price;
-		this.item_img = item_img;
-		this.prov_id = prov_id;
-		this.item_stock = item_stock;
+	@ManyToOne
+	@JoinColumn(name="prov_id")
+	@JsonIgnore
+	private Provider provider;
+	
+	public Item() {
+		
 	}
 
 	public long getId() {
@@ -55,12 +61,12 @@ public class Item implements Serializable{
 		this.item_img = item_img;
 	}
 
-	public int getProv_id() {
-		return prov_id;
+	public Provider getProvider() {
+		return provider;
 	}
 
-	public void setProv_id(int prov_id) {
-		this.prov_id = prov_id;
+	public void setProvider(Provider provider) {
+		this.provider = provider;
 	}
 
 	public int getItem_stock() {
@@ -71,6 +77,29 @@ public class Item implements Serializable{
 		this.item_stock = item_stock;
 	}
 
+	public String getItem_name() {
+		return item_name;
+	}
+
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
+	}
+
+	public String getItem_cat() {
+		return item_cat;
+	}
+
+	public void setItem_cat(String item_cat) {
+		this.item_cat = item_cat;
+	}
+
+	public int getItem_rating() {
+		return item_rating;
+	}
+
+	public void setItem_rating(int item_rating) {
+		this.item_rating = item_rating;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
