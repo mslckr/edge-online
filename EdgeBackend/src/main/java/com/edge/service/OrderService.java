@@ -104,7 +104,7 @@ public class OrderService {
 			List<ItemSelectionDTO> items =orderLine.getItems();
 			Set<Order> orders= new HashSet<>();
 			for(ItemSelectionDTO i: items)
-				orders.add(new Order(itemsMap.get(i.getItem_id()), 1, savedOrderLine,false));
+				orders.add(new Order(itemsMap.get(i.getItem_id()), i.getQuantity(), savedOrderLine,false));
 			
 			orderConfirmation.setOrderId(savedOrderLine.getId());
 			orderConfirmation.setAuth_code(savedOrderLine.getAuth_code());
@@ -112,7 +112,7 @@ public class OrderService {
 			return orderConfirmation;
 	}
 	
-	//
+	//Complete orderline with orderline id
 	public OrderLineDTO completeOrders(int orderLine_id) {
 		OrderLine orderLine= orderLineRepository.findById(orderLine_id).get();
 		List<OrderDTO> fetchedOrders= fetchOrdersInLine(orderLine);
