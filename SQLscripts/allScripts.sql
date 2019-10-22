@@ -44,8 +44,6 @@ CREATE TABLE `order` (
   `amount` int(11) NOT NULL DEFAULT '1',
   `complete` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `orderline_id_idx` (`orderline_id`),
   KEY `item_id_idx` (`item_id`),
-  CONSTRAINT `item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
-  CONSTRAINT `orderline_id` FOREIGN KEY (`orderline_id`) REFERENCES `orderline` (`id`)
+  CONSTRAINT `item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
 )
