@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edge.dto.ItemDTO;
@@ -29,8 +30,10 @@ public class ItemController {
 	private ItemService itemService;
 	
 	@GetMapping("/items")
-	public List<ItemDTO> getAllItems(){
-		return itemService.findAll();
+	public List<ItemDTO> getAllItems(@RequestParam(name= "name", required = false) String searchTerm,
+			@RequestParam(name= "category", required = false) String itemCat,@RequestParam(name= "provider", required = false) String provName,
+			@RequestParam(name= "inStockOnly", required = false)Boolean inStockOnly){
+		return itemService.findAllFilterable(searchTerm, itemCat, provName, inStockOnly);
 	}
 	
 	@GetMapping("/items/{id}")

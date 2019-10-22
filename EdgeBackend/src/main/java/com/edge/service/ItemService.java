@@ -28,11 +28,7 @@ public class ItemService {
 	
 	@Autowired
 	ProviderMapper providerMapper;
-	
-	public List<ItemDTO> findAll(){
-		return itemRepository.findAll().stream().map(i -> itemMapper.toDto(i)).collect(Collectors.toList());
-	}
-	
+
 	//find all the items that meet the filter conditions
 	public List<ItemDTO> findAllFilterable (String searchTerm, String itemCat, String provName, Boolean inStockOnly){
 		List<ItemDTO> list= null;
@@ -40,18 +36,18 @@ public class ItemService {
 		list= itemRepository.findAll().stream().map(i -> itemMapper.toDto(i)).collect(Collectors.toList());
 		
 		//filter all the items based on the search options
-		list.stream()
-			.filter(i ->(i.getItem_name().equals(searchTerm)|| searchTerm.equals("")))
-			.filter(i ->(i.getItem_cat().equals(itemCat) || itemCat.equals("")))
-			.filter(i->(i.getItem_stock() > 0 || inStockOnly == false))
+		return list.stream()
+			.filter(i ->(searchTerm == null || searchTerm.equals("") || i.getItem_name().toLowerCase().startsWith(searchTerm.toLowerCase())))
+			.filter(i ->(itemCat == null || itemCat.equals("") || i.getItem_cat().equals(itemCat)))
+			.filter(i ->(provName == null || provName.equals("") || i.getProvider().getProv_name().equalsIgnoreCase(provName)))
+			.filter(i->(inStockOnly == null || inStockOnly == false || i.getItem_stock() > 0))
 			.collect(Collectors.toList());
 		
-		return list;
 	}
 	
 	//find item by id 
 	public ItemDTO findOne (Long id) {
-		return itemRepository.findById(id);
+		return itemMapper.toDto(itemRepository.findById(id));
 	}
 	
 	//create new item

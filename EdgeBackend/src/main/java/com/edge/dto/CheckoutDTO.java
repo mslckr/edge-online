@@ -6,7 +6,8 @@ public class CheckoutDTO {
 	private String address;
 	private String cardNumber;
 	private String cardExpiry;
-	private String cardSecurityCode;
+	private int cardSecurityCode;
+	
 	public String getName() {
 		return name;
 	}
@@ -31,10 +32,10 @@ public class CheckoutDTO {
 	public void setCardExpiry(String cardExpiry) {
 		this.cardExpiry = cardExpiry;
 	}
-	public String getCardSecurityCode() {
+	public int getCardSecurityCode() {
 		return cardSecurityCode;
 	}
-	public void setCardSecurityCode(String cardSecurityCode) {
+	public void setCardSecurityCode(int cardSecurityCode) {
 		this.cardSecurityCode = cardSecurityCode;
 	}
 	

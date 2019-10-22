@@ -18,6 +18,7 @@ public class ItemMapper {
 		item.setItem_name(dto.getItem_name());
 		item.setItem_cat(dto.getItem_cat());
 		item.setItem_img(dto.getItem_img());
+		item.setItem_rating(dto.getItem_rating());
 		item.setItem_price(dto.getItem_price());
 		item.setItem_stock(dto.getItem_stock());
 		item.setProvider(providerMapper.toEntity(dto.getProvider()));
@@ -30,6 +31,7 @@ public class ItemMapper {
 		dto.setItem_name(entity.getItem_name());
 		dto.setItem_cat(entity.getItem_cat());
 		dto.setItem_img(entity.getItem_img());
+		dto.setItem_rating(entity.getItem_rating());
 		dto.setItem_price(entity.getItem_price());
 		dto.setItem_stock(entity.getItem_stock());
 		dto.setProvider(providerMapper.toDto(entity.getProvider()));
