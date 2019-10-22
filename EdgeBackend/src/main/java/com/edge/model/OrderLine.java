@@ -1,12 +1,15 @@
 package com.edge.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="orderline")
@@ -24,6 +27,9 @@ public class OrderLine implements Serializable{
 	private int user_card_sec;
 	private String user_card_expdate;	//yyyy-mm-dd format
 	private int auth_code;
+	
+	@OneToMany(mappedBy = "orderline")
+	private Set<Order> orders;
 
 
 	public int getId() {
@@ -77,4 +83,12 @@ public class OrderLine implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	public Set<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+	
+	
 }

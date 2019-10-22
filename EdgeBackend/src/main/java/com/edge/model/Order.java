@@ -20,9 +20,9 @@ public class Order implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
 
 	@OneToOne
+	@JoinColumn(name="item_id")
 	private Item item;
 	
 	private int amount;
@@ -31,7 +31,7 @@ public class Order implements Serializable{
 	@JoinColumn(name="orderline_id")
 	private OrderLine orderline;
 	
-	private boolean complete= false;
+	private boolean complete;
 	
 	public Order() {}
 	

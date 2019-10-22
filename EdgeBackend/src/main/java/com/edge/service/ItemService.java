@@ -51,7 +51,7 @@ public class ItemService {
 	
 	//find item by id 
 	public ItemDTO findOne (Long id) {
-		return itemRepository.findById(id);
+		return itemMapper.toDto(itemRepository.findById(id));
 	}
 	
 	//create new item

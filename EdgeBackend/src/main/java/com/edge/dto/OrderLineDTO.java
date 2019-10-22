@@ -1,6 +1,9 @@
 package com.edge.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
+
 
 public class OrderLineDTO {
 
@@ -12,7 +15,10 @@ public class OrderLineDTO {
 	private String user_card_no;
 	private int user_card_sec;
 	private String user_card_expdate;	//yyyy-mm-dd format
+	CheckoutDTO payment;
 	private int auth_code;
+	private OrderConfirmationDTO confirmation;
+	private List<ItemSelectionDTO> items;
 	
 	public int getId() {
 		return id;
@@ -62,5 +68,24 @@ public class OrderLineDTO {
 	public void setAuth_code(int auth_code) {
 		this.auth_code = auth_code;
 	}
+	public OrderConfirmationDTO getConfirmation() {
+		return confirmation;
+	}
+	public void setConfirmation(OrderConfirmationDTO confirmation) {
+		this.confirmation = confirmation;
+	}
+	public CheckoutDTO getPayment() {
+		return payment;
+	}
+	public void setPayment(CheckoutDTO payment) {
+		this.payment = payment;
+	}
+	public List<ItemSelectionDTO> getItems() {
+		return items;
+	}
+	public void setItems(List<ItemSelectionDTO> items) {
+		this.items = items;
+	}
+	
 	
 }
