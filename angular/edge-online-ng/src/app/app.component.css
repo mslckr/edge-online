@@ -40,15 +40,23 @@
 }
 
 .nav-labels-container > a:hover,
-.nav-bar > img:hover {
+.nav-bar img:hover {
     opacity: 0.5;
     cursor: pointer;
 }
 
-.nav-bar > img {
+.nav-bar img {
     width: auto;
     height: 30px;
+}
+
+.nav-bar a {
     margin-left: auto;
+}
+
+.title-bar img:hover {
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 .container {
