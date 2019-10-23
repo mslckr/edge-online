@@ -21,9 +21,12 @@ export class CartService {
     }
     //else update the quantity and total of that cartItem
     else{
-    curr_cart.quantity +=1;
-    curr_cart.Total = cartItem.price * cartItem.quantity;
+      cartItem.quantity +=1;
+      cartItem.total_amount = cartItem.price * cartItem.quantity;
     }
+    //update the quantity and total of the cart
+      curr_cart.quantity +=1;
+      curr_cart.Total = cartItem.price * cartItem.quantity;
     //save changes
     sessionStorage.setItem("currentCart",JSON.stringify(curr_cart));
     
@@ -35,13 +38,18 @@ export class CartService {
       let removeCartItem: CartItem =curr_cart.cartItems.find(i => i.itemId == cartItemId);
 
       if(removeCartItem != undefined){
-        if(removeCartItem.quantity > 0)
+        //if the cartitem to remove quantity is greater than 1, quantity-- and totalamount - price
+        if(removeCartItem.quantity > 1){
           curr_cart.cartItems[removeCartItem.itemId].quantity -=1;
+          curr_cart.cartItems[removeCartItem.itemId].total_amount -= removeCartItem.price;
+        }
+        //
         else{
           curr_cart.cartItems.splice(removeCartItem.itemId);
-          //curr_cart.quantity -= 1;
-          curr_cart.Total -= removeCartItem.price;
         }
+
+        curr_cart.quantity -= 1;
+        curr_cart.Total -= removeCartItem.price;
         sessionStorage.setItem("currentCart",JSON.stringify(curr_cart));
       }
   }
