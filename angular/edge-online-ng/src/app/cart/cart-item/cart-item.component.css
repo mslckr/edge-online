@@ -1,0 +1,20 @@
+.cartItem-container{
+    background-color: rgb(119, 132, 250);
+    border: solid darkblue;
+    border-radius: 15px;
+}
+
+
+.cartItem-name{
+    border-bottom: solid black;
+    font-weight: bolder;
+    font-size: 1.4rem;
+}
+
+.price-block{
+    background-color: rgb(53, 236, 53);
+    border: solid rgb(53, 236, 53);
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 15px
+}
