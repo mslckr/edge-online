@@ -1,7 +1,7 @@
 
-insert into provider values(1243, "Dell" , "ToBeImpl", "placeholder.png", "ToBeImpl");
-insert into provider values(5923, "HP" , "ToBeImpl", "placeholder.png", "ToBeImpl");
-insert into provider values(71, "Razor" , "ToBeImpl", "placeholder.png", "ToBeImpl");
+insert into provider values(1243, "Dell" , "ToBeImpl", "ToBeImpl", "placeholder.png");
+insert into provider values(5923, "HP" , "ToBeImpl", "ToBeImpl", "placeholder.png");
+insert into provider values(71, "Razor" , "ToBeImpl", "ToBeImpl", "placeholder.png");
 
 insert into item values(1, "Alienware Area-51 Threadripper", "Computer Tower", 2339.99, 4, "placeholder.png", 1243); 
 insert into item values(2, "HP Pavilion Gaming 790-0020 Tower", "Computer Tower", 849.99, 14, "placeholder.png", 5923); 
