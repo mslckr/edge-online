@@ -1,7 +1,7 @@
-drop table `order`;
-drop table `orderline`;
-drop table `item`;
-drop table `provider`;
+drop table if exists `order`;
+drop table if exists `orderline`;
+drop table if exists `item`;
+drop table if exists `provider`;
 CREATE TABLE `provider` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `prov_name` varchar(90) NOT NULL,
