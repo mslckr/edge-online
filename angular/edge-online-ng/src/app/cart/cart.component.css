@@ -3,3 +3,6 @@
     color: whitesmoke;
     font-size: 1.2rem;
 }
+.cartItem-container{
+    border: solid black;
+}

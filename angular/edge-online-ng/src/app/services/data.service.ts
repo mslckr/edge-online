@@ -107,8 +107,7 @@ export class DataService {
     return this.http.post<any>(this.constants.ordersUrl, {
       name: order.name,
       address: order.address,
-      payment: order.payment,
-      items: order.movies
+      payment: order.payment
     }, { withCredentials: true });
   }
    /* .subscribe(data => {
