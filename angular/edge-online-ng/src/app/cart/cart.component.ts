@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../model/cart.model'
+import { Cart } from '../model/cart.model';
+import { CartService } from '../services/cart.service'
 
 @Component({
   selector: 'app-cart',
@@ -33,7 +34,19 @@ export class CartComponent implements OnInit {
       stock: 25,
       provider: null,
       quantity:1,
-      total_amount:150
+      total_amount:100
+    },
+    {
+      itemId: 10,
+      name: "gtx 25",
+      category: "Graphic Cards",
+      price: 200,
+      image: "",
+      rating: 5,
+      stock: 25,
+      provider: null,
+      quantity:1,
+      total_amount:200
     }
   ],
     quantity: 2,
@@ -42,17 +55,20 @@ export class CartComponent implements OnInit {
   };
   
 
-  constructor() { 
+  constructor(private cartService: CartService) { 
     //this.cartItem.
     //this.quantity=10;
     //this.total=200;
   }
 
   ngOnInit() {
-    //this.getCartSession();
   }
 
   getCartSession(){
     return localStorage.getItem("currentCart");
+  }
+
+  clearCart(){
+    this.cartService.removeAll();
   }
 }
