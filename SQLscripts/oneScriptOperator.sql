@@ -16,7 +16,7 @@ CREATE TABLE `item` (
   `item_name` varchar(120) NOT NULL,
   `item_cat` varchar(45) DEFAULT NULL,
   `item_price` double NOT NULL,
-  `item_inv` int(11) NOT NULL,
+  `item_stock` int(11) NOT NULL,
   `item_img` varchar(240) NOT NULL,
   `item_rating` double NOT NULL default '0.0',
   `prov_id` int(11) NOT NULL,
