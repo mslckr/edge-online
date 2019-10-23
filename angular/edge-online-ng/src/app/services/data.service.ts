@@ -12,33 +12,11 @@ import { ConstantsService} from './constants.service';
   providedIn: 'root'
 })
 export class DataService {
-  //private filterObject = new Filter();
-  //private paginationObject = new Pagination();
-  pageChange: Subject<number> = new Subject();
-  itemListFetched: Subject<boolean> = new Subject();
 
-  item: Item;
-  items: Item[];
-  providers: Provider[]=[];
-  orders: Order[] =[];
 
   constructor(private http: HttpClient, private constants: ConstantsService) { 
-    //this.filter.inStockOnly= false;
     //this.getAllItems();
   }
-
-  subscribeToPageChange(): Subject<number> {
-    return this.pageChange;
-  }
-
-  subscribeToItemFetch(): Subject<boolean> {
-    return this.itemListFetched;
-  }
-
-  /*changePage(page: number) {
-    this.pagination.currentPage = page;
-    this.pageChange.next(page);
-  }*/
 
   //Advance Search
   getAllItems(name: string, category: string, provider: string, inStockOnly: boolean){
@@ -49,16 +27,6 @@ export class DataService {
   getItemById(id: number){
     let obs = this.http.get(`${this.constants.itemsUrl}/id`);
   return obs;
-  }
-
-  //Don't subscribe here, subscribe on the component
-  storeSessionData(dataType: string, data: any) {
-    return this.http.post(this.constants.sessionsUrl + '/' + dataType, data, { withCredentials: true });
-      //.subscribe(response => { });
-  }
-
-  getSessionData(dataType: string): any {
-    return this.http.get(this.constants.sessionsUrl + '/' + dataType, { withCredentials: true });
   }
 
   /**------------------ admin screen functions------------------ */
@@ -153,11 +121,4 @@ export class DataService {
   shipOrder(order: Order) {
    return this.http.post(this.constants.ordersUrl + '/' + order.orderId, null, { withCredentials: true });
   }
-/*
-  get filter(): Filter {
-    return this.filterObject;
-  }
-  get pagination(): Pagination {
-    return this.paginationObject;
-  }*/
 }
