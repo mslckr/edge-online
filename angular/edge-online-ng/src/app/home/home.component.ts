@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  title = "Home"
+  title = "The frontline of E-Sports"
 
   constructor() { }
 

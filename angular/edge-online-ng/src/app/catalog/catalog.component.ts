@@ -10,9 +10,14 @@ import { Provider } from '../model/provider.model';
 })
 export class CatalogComponent implements OnInit {
 
+  stockOnly = false
   title = "Catalog"
   itemNameFilter = ""
+  categoryFilter = ""
+  providerFilter = ""
   items = []
+  providers = new Set([])
+  categories = new Set([]);
 
     // itemId: number;
     // name: string;
@@ -44,6 +49,8 @@ export class CatalogComponent implements OnInit {
           i.provider.prov_addr, 
           i.provider.prov_logo.substring(7), 
           i.provider.prov_link);
+        this.providers.add(i.provider.prov_name);
+        this.categories.add(i.item_cat);
         this.items.push(item);
       });
     });
@@ -60,6 +67,18 @@ export class CatalogComponent implements OnInit {
 
   onSearchBarChanged(event: any) {
     this.itemNameFilter = event.target.value;
+  }
+
+  onStockButtonChanged(event: any) {
+    this.stockOnly = !this.stockOnly;
+  }
+
+  onCategoryChange(event: any) {
+    this.categoryFilter = event.target.value;
+  }
+
+  onProviderChange(event: any) {
+    this.providerFilter = event.target.value;
   }
 
 }
