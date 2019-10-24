@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cart, CartItem } from '../model/cart.model'
 import { Item } from '../model/item.model';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,17 @@ import { Item } from '../model/item.model';
 export class CartService {
 
   constructor() { }
-
+  
+  //may need to return observable
+  getCart(): any{
+    let cartObservable = new Observable(observer => {
+          observer.next( JSON.parse(sessionStorage.getItem("currentCart")));
+    });
+    return cartObservable;
+}
   //add item to our session cart
   addToCart(addedItem: Item){
-    let curr_cart: Cart =JSON.parse(sessionStorage.getItem("currentCart"));
+    let curr_cart: Cart = JSON.parse(sessionStorage.getItem("currentCart"));
     let cartItem = new CartItem(addedItem);
 
     //if item is not in cart then add it to the cart

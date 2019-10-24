@@ -10,7 +10,6 @@ import { CartService } from '../services/cart.service'
 export class CartComponent implements OnInit {
   title= "Cart";
   
-  //cartItems: Cart[];
   cart: Cart= {
     cartItems: [{
       itemId: 4,
@@ -56,16 +55,16 @@ export class CartComponent implements OnInit {
   
 
   constructor(private cartService: CartService) { 
-    //this.cartItem.
-    //this.quantity=10;
-    //this.total=200;
   }
 
   ngOnInit() {
+    
   }
 
   getCartSession(){
-    return localStorage.getItem("currentCart");
+    this.cart= this.cartService.getCart().
+      subscribe(data => this.cart = data);
+    
   }
 
   clearCart(){

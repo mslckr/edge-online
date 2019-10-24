@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule }    from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './catalog/catalog.component';
@@ -14,6 +15,7 @@ import { ConstantsService } from './services/constants.service';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { ItemFilterPipe } from './item-filter.pipe';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,12 @@ import { ItemFilterPipe } from './item-filter.pipe';
     CartComponent,
     CheckoutComponent,
     CartItemComponent,
-    ItemFilterPipe
+    ItemFilterPipe,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
   ],
