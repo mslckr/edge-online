@@ -1,9 +1,18 @@
 <div class="nav-bar">
-    <input (keyup)="onSearchBarChanged($event)" placeholder="Search input box">
-    <button>Search</button>
+    <input class="search-bar" (keyup)="onSearchBarChanged($event)" placeholder="Search input box">
+    <select id="category-select" (change)="onCategoryChange($event)">
+        <option value="">Category</option>
+        <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+    </select>
+    <select id="provider-select" (change)="onProviderChange($event)">
+        <option value="">Provider</option>
+        <option *ngFor="let provider of providers" value="{{provider}}">{{provider}}</option>
+    </select>
+    <input class="stock-btn" id="stock-btn" type="checkbox" (click)="onStockButtonChanged($event)">
+    <label class="stock-label" for="stock-btn">In stock only</label>
 </div>
 <div class="content">
-    <div *ngFor="let item of items | itemFilter:itemNameFilter" class="item-container">
+    <div *ngFor="let item of items | itemFilter:itemNameFilter:stockOnly:providerFilter:categoryFilter" class="item-container">
         <img src="../assets/{{item.image}}">
         <div class="item-detail-wrapper">
             <div class="item-top-container">
