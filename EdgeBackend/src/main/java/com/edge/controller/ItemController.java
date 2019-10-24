@@ -3,6 +3,7 @@ package com.edge.controller;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -62,6 +63,12 @@ public class ItemController {
 	@GetMapping("/providers")
 	private ResponseEntity<List<ProviderDTO>> getAllProviders(){
 		List<ProviderDTO> r=itemService.findAllProviders();
+		return ResponseEntity.ok().body(r);
+	}
+	
+	@GetMapping("/categories")
+	private ResponseEntity<Set<String>> getAllCategories(){
+		Set<String> r= itemService.findAllCategories();
 		return ResponseEntity.ok().body(r);
 	}
 }
