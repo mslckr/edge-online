@@ -5,7 +5,7 @@
         </div>
         <div class="col-6">
                 <div class="cartItem-name mb-2"><p>{{cartItem.name}} </p></div>
-            <div class="price-block p-2"> {{cartItem.price | currency}} x 1
+            <div class="price-block p-2"> {{cartItem.price | currency}} x {{cartItem.quantity}}
                 <button class="btn btn-danger ml-2" (click)="removeCartItem()" *ngIf="page =='Cart'">Remove</button>
                 <span *ngIf="page =='Checkout'"> = {{cartItem.total_amount | currency}}</span>
             </div>

@@ -1,23 +1,64 @@
 import { Injectable } from '@angular/core';
 import { Cart, CartItem } from '../model/cart.model'
 import { Item } from '../model/item.model';
-import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CartService {
+  cart: Cart= {
+    cartItems: [{
+      itemId: 4,
+      name: "gtx 4",
+      category: "Graphic Cards",
+      price: 150,
+      image: "",
+      rating: 5,
+      stock: 25,
+      provider: null,
+      quantity:2,
+      total_amount:150
+    },
+    {
+      itemId: 7,
+      name: "gtx 2",
+      category: "Graphic Cards",
+      price: 100,
+      image: "",
+      rating: 5,
+      stock: 25,
+      provider: null,
+      quantity:1,
+      total_amount:100
+    },
+    {
+      itemId: 10,
+      name: "gtx 25",
+      category: "Graphic Cards",
+      price: 200,
+      image: "",
+      rating: 5,
+      stock: 25,
+      provider: null,
+      quantity:1,
+      total_amount:200
+    }
+  ],
+    quantity: 3,
+    Total: 125
 
+  };
   constructor() { }
   
-  //may need to return observable
-  getCart(): any{
-    let cartObservable = new Observable(observer => {
-          observer.next( JSON.parse(sessionStorage.getItem("currentCart")));
-    });
-    return cartObservable;
-}
+  createTestCart(): Cart{
+    sessionStorage.setItem("currentCart",JSON.stringify(this.cart));
+    return this.cart;
+  }
+  getCart(): Cart{
+    return JSON.parse(sessionStorage.getItem("currentCart"));
+  }
+
   //add item to our session cart
   addToCart(addedItem: Item){
     let curr_cart: Cart = JSON.parse(sessionStorage.getItem("currentCart"));
@@ -58,23 +99,19 @@ export class CartService {
 
         curr_cart.quantity -= 1;
         curr_cart.Total -= removeCartItem.price;
+        console.log(curr_cart);
         sessionStorage.setItem("currentCart",JSON.stringify(curr_cart));
+       
+        this.cart=curr_cart;
       }
   }
 
-  //update cart item Quantity passing in the old quantity and new quantity
-  /*updateCartItemQuantity(cartItem: CartItem){
-    let curr_cart: Cart = JSON.parse(sessionStorage.getItem("currentCart"));
-    let oldItemTotal = cartItem.price * old_quantity;
-    curr_cart.Total -= oldItemTotal;
-    let newItemTotal = cartItem.price * updated_quantity;
-    curr_cart.Total += newItemTotal;
-
-    sessionStorage.setItem("currentCart",JSON.stringify(curr_cart));
-  }*/
-
-  removeAll(){
+  removeAll(): Cart{
+    this.cart.cartItems=[];
+    this.cart.Total=0;
+    this.cart.quantity=0;
     sessionStorage.clear();
+    return this.cart;
   }
 
 }
