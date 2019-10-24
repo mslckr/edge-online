@@ -1,11 +1,15 @@
 # edge-online
 
-"Current Phase: 0"
+"Current Phase: 2"
 
 # Objectives:
 
-"completion of mock-up"
+"Connect the front end to the back end"
 
-"creation of databases"
+"Complete Home, catalog, cart, and checkout pages"
 
-"creation of the projects"
+"Prepare for admin pages if time allows"
+
+# Version date
+
+"10/23/2019 3:15pm"

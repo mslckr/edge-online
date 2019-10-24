@@ -1,0 +1,132 @@
+:host {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-bar {
+    display: flex;
+    background-color: #1D538B;
+    padding: 10px;
+    height: 30px;
+    box-sizing: content-box !important;
+}
+
+.nav-bar > button {
+    cursor: pointer;
+    height: 100%;
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: #9AC351;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 0;
+    margin-left: auto;
+}
+
+.nav-bar > button:active {
+    opacity: 0.5;
+}
+
+.content {
+    flex: 1;
+    overflow: scroll;
+}
+
+.item-container {
+    background-color: #989BF8;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.item-label {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.item-top-container {
+    border-bottom: 2px solid black;
+    display: flex;
+    padding: 15px;
+    margin-left: 5px;
+}
+
+.item-container {
+    display: flex;
+    align-items: center;
+}
+
+.item-detail-wrapper {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+    width: 100%;
+}
+
+.item-container > img {
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.item-top-container > input {
+    margin-left: auto;
+    border: 2px solid black;
+    border-radius: 7px;
+    margin-right: 5px;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.item-top-container > button {
+    border-radius: 7px;
+    background-color: #0018E6;
+    border: none;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.item-bottom-container {
+    display: flex;
+    padding: 15px;
+}
+
+.item-bottom-container > img {
+    margin-left: 10px;
+    height: 30px;
+}
+
+.item-rating-label {
+    background-color: #C3FDFE;
+    border-radius: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.item-category-label {
+    background-color: #0018E6;
+    border-radius: 7px;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.item-provider-label {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
