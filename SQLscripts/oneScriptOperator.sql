@@ -47,13 +47,13 @@ CREATE TABLE `order` (
   KEY `item_id_idx` (`item_id`),
   CONSTRAINT `item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
 );
-insert into provider values(1243, "Dell" , "https://www.dell.com/en-us", "Round Rock, Texas, USA", "images/Prov_Dell.png");
-insert into provider values(5923, "HP" , "https://hp.com/country/us/en/welcome.html", "Palo Alto, CA, USA", "images/Prov_HP.png");
-insert into provider values(71, "Razor" , "https://www.razer.com/Store", "Carlsbad, CA, USA", "images/Prov_Razer.png");
-insert into provider values(1,"Team Edge","/about","Basking Ridge, NJ, USA","images/Prov_Team_Edge.png");
-insert into item values(1, "Alienware Area-51 Threadripper", "Computer Tower", 2339.99, 4, "images/Area_51_Threadripper.png",4.6, 1243); 
-insert into item values(2, "HP Pavilion Gaming 790-0020 Tower", "Computer Tower", 849.99, 14, "images/Pavilion_Tower.png",3.4, 5923); 
-insert into item values(3, "Alienware Area-51 Gaming Laptop", "Laptop", 2049.99, 5, "images/Area_51_Laptop.png",4.1, 1243); 
-insert into item values(4, "Razer BlackWidow Elite Mechanical Gaming Keyboard", "Keyboard", 169.99, 11, "images/Blackwidow_Elite.png",3.9, 71); 
-insert into item values(5, "Razer DeathAdder Elite Gaming Mouse", "Mouse", 69.99, 36, "images/Deathadder_Elite.png",2.9, 71); 
-insert into item values(10,"EDGE Online Custom Mousepad","Special",15.99,50,"images/EDGE_MousePad.png",3.7,1)
+insert into provider values(1243, "Dell" , "https://www.dell.com/en-us", "Round Rock, Texas, USA", "Prov_Dell.png");
+insert into provider values(5923, "HP" , "https://hp.com/country/us/en/welcome.html", "Palo Alto, CA, USA", "Prov_HP.png");
+insert into provider values(71, "Razor" , "https://www.razer.com/Store", "Carlsbad, CA, USA", "Prov_Razer.png");
+insert into provider values(1,"Team Edge","/about","Basking Ridge, NJ, USA","Prov_Team_Edge.png");
+insert into item values(1, "Alienware Area-51 Threadripper", "Computer Tower", 2339.99, 4, "Area_51_Threadripper.png",4.6, 1243); 
+insert into item values(2, "HP Pavilion Gaming 790-0020 Tower", "Computer Tower", 849.99, 14, "Pavilion_Tower.png",3.4, 5923); 
+insert into item values(3, "Alienware Area-51 Gaming Laptop", "Laptop", 2049.99, 5, "Area_51_Laptop.png",4.1, 1243); 
+insert into item values(4, "Razer BlackWidow Elite Mechanical Gaming Keyboard", "Keyboard", 169.99, 11, "Blackwidow_Elite.png",3.9, 71); 
+insert into item values(5, "Razer DeathAdder Elite Gaming Mouse", "Mouse", 69.99, 36, "Deathadder_Elite.png",2.9, 71); 
+insert into item values(10,"EDGE Online Custom Mousepad","Special",15.99,50,"EDGE_MousePad.png",3.7,1)

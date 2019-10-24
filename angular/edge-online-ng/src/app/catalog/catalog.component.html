@@ -1,8 +1,9 @@
 <div class="nav-bar">
+    <input (keyup)="onSearchBarChanged($event)" placeholder="Search input box">
     <button>Search</button>
 </div>
 <div class="content">
-    <div *ngFor="let item of items" class="item-container">
+    <div *ngFor="let item of items | itemFilter:itemNameFilter" class="item-container">
         <img src="../assets/{{item.image}}">
         <div class="item-detail-wrapper">
             <div class="item-top-container">
@@ -19,7 +20,7 @@
                 <img *ngIf="item.rating > 3.4 && item.rating < 4.5" src="../assets/EDGE_Online_Rating_4.png">
                 <img *ngIf="item.rating > 4.4 && item.rating <= 5" src="../assets/EDGE_Online_Rating_5.png">
                 <div class="item-category-label"> {{ item.category }} </div>
-                <div class="item-provider-label"> Provider </div>
+                <div class="item-provider-label"> {{ item.provider.name }} </div>
             </div>
         </div>
         

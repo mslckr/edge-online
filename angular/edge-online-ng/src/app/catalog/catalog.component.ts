@@ -11,7 +11,7 @@ import { Provider } from '../model/provider.model';
 export class CatalogComponent implements OnInit {
 
   title = "Catalog"
-
+  itemNameFilter = ""
   items = []
 
     // itemId: number;
@@ -46,7 +46,6 @@ export class CatalogComponent implements OnInit {
           i.provider.prov_link);
         this.items.push(item);
       });
-      console.log(this.items);
     });
   }
 
@@ -57,6 +56,10 @@ export class CatalogComponent implements OnInit {
   onAddClicked(itemToAdd) {
     console.log(this.currQuantity);
     console.log(itemToAdd);
+  }
+
+  onSearchBarChanged(event: any) {
+    this.itemNameFilter = event.target.value;
   }
 
 }

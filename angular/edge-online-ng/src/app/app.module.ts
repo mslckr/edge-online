@@ -13,6 +13,7 @@ import { DataService } from './services/data.service';
 import { ConstantsService } from './services/constants.service';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import { ItemFilterPipe } from './item-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     AboutComponent,
     CartComponent,
     CheckoutComponent,
-    CartItemComponent
+    CartItemComponent,
+    ItemFilterPipe
   ],
   imports: [
     BrowserModule,
