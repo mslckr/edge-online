@@ -37,6 +37,7 @@
     margin-bottom: auto;
     text-decoration: none;
     color: #7DFBFB;
+    font-size: 20px;
 }
 
 .nav-labels-container > a:hover,
@@ -51,6 +52,8 @@
 }
 
 .nav-bar a {
+    display: flex;
+    justify-content: center;
     margin-left: auto;
 }
 
@@ -59,16 +62,17 @@
     opacity: 0.5;
 }
 
-.container {
+.root-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100vh;
 }
 
 .content-container {
     background-color: #8695B6;
-    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-container {
@@ -76,13 +80,13 @@
     background-color: #05215C;
     display: flex;
     justify-content: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    height: 30px;
 }
 
 .footer-container * {
-    line-height: 0px;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 .clickable:hover {

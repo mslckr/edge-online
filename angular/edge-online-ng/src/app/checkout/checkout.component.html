@@ -1,1 +1,58 @@
-<p>checkout works!</p>
+<div class="container-fluid">
+  <div class="total-bar py-2 row">
+    <div class="col-1"></div>
+    <div class="col-1"><span class=""> Checkout</span></div>
+    <div class="col-1"></div>
+    <div class="col-2"><span class=""> Items: 3</span></div>
+    <div class="col-2"><span class=""> Total: {{200 | currency}}</span></div>
+    <div class="col-3"></div>
+    <div class="col-2">
+      <button routerLink="/cart" class="btn btn-danger px-4 mr-3">Cancel</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="checkout-form col-6 p-0">
+      <div class="inform d-flex justify-content-center pt-2">
+        <p>Please fill out the following information</p>
+      </div>
+      <form [formGroup]="checkoutForm" class="px-3" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name" maxlength="50">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input type="text" formControlName="address" class="form-control" id="address" placeholder="Address" maxlength="150">
+        </div>
+
+        <div class="form-group">
+          <label for="cardnumber">Card Number:</label>
+          <input type="text" formControlName="cardnumber" class="form-control" id="cardnumber" placeholder="#### #### #### ####" maxlength="12">
+        </div>
+
+        <div class="form-group">
+          <label for="securitycode">Sec:</label>
+          <input type="text" formControlName="securitycode" class="form-control" id="securitycode" placeholder="###" maxlength="3">
+        </div>
+        
+          <div class="form-group">
+            <label for="exp_mm">Expire Date:</label>
+            <input type="text" formControlName="exp_mm" class="form-control" id="exp_mm" placeholder="mm" maxlength="2">
+            <label class="sr-only" for="exp_yy">Expire Date:</label>
+            <input type="text" formControlName="exp_yy" class="form-control" id="exp_yy" placeholder="yy" maxlength="2">
+          </div>
+    
+        <div class="form-group d-flex justify-content-center mt-2">
+            <button class="btn btn-primary px-5">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="cart-list container-fluid my-2 col-6">
+      <div class="mb-2" *ngFor="let item of cart.cartItems">
+        <app-cart-item [page]='title' [cartItem]='item'></app-cart-item>
+      </div>
+    </div>
+  </div>
+</div>
