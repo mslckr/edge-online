@@ -9,6 +9,7 @@ import { CartService } from '../../services/cart.service'
 })
 export class CartItemComponent implements OnInit {
   @Input("cartItem") cartItem: CartItem;
+  @Input("page") page: String;
 
   constructor(private cartService: CartService) { }
 

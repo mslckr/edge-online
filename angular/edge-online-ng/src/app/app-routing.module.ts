@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component'
 import { CartComponent } from './cart/cart.component'
 import { AboutComponent } from './about/about.component';
 import { CheckoutComponent} from './checkout/checkout.component'
+import { OrderConfirmationComponent} from './order-confirmation/order-confirmation.component'
 
 const routes: Routes = [
     { path: 'catalog', component: CatalogComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     {path: 'cart', component: CartComponent },
     {path: 'checkout', component: CheckoutComponent },
+    {path: 'confirmation', component: OrderConfirmationComponent },
     {path: '', redirectTo: '/home', pathMatch: 'full'},
   ];
 
