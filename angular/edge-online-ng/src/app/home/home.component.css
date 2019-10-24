@@ -1,8 +1,32 @@
-.title-bar img {
-    width: 300px;
-    height: auto;
+:host {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
-.content-container {
-    background-image: url("assets\Home_Background_Image.png");
+
+img {
+    height: auto;
+    width: 100%;
+    position: absolute;
+}
+
+.home-container {
+    background-image: url('../../assets/Home_Background_Image.png');
     height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.content-container {
+    color: #9AF0F5;
+    width: 50%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.home-blurb {
+    font-size: 20px;
+    margin-top: 70px;
+    font-weight: 500;
 }
