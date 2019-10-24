@@ -15,23 +15,41 @@ img {
     height: 100%;
     width: auto;
     display: flex;
-    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: #9AF0F5;
+    flex-direction: column;
+    align-items: center;
 }
 
 .content-container {
-    color: #9AF0F5;
-    width: 50%;
+    width: 40%;
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
 }
 
 .home-blurb {
-    font-size: 20px;
-    margin-top: 70px;
+    font-size: 22px;
+    margin-top: 55px;
     font-weight: 500;
 }
 
 .title {
     margin-top: 15px;
     font-size: 30px;
+}
+
+button {
+    margin-top: auto;
+    margin-bottom: 2%;
+    border-radius: 7px;
+    font-size: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    color: white;
+    background-color: #001AF5;
+    border: 2px solid #001AA0;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.5;
 }

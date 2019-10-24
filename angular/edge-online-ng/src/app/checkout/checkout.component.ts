@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Cart } from '../model/cart.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../services/cart.service';
+import { CheckoutService } from '../services/checkout.service';
 
 @Component({
   selector: 'app-checkout',
@@ -12,67 +13,14 @@ import { CartService } from '../services/cart.service';
 export class CheckoutComponent implements OnInit {
   title="Checkout";
 
-  cart: Cart= {
-    cartItems: [{
-      itemId: 4,
-      name: "gtx 4",
-      category: "Graphic Cards",
-      price: 150,
-      image: "",
-      rating: 5,
-      stock: 25,
-      provider: null,
-      quantity:1,
-      total_amount:150
-    },
-    {
-      itemId: 7,
-      name: "gtx 2",
-      category: "Graphic Cards",
-      price: 100,
-      image: "",
-      rating: 5,
-      stock: 25,
-      provider: null,
-      quantity:1,
-      total_amount:100
-    },
-    {
-      itemId: 10,
-      name: "gtx 25",
-      category: "Graphic Cards",
-      price: 200,
-      image: "",
-      rating: 5,
-      stock: 25,
-      provider: null,
-      quantity:1,
-      total_amount:200
-    },
-    {
-      itemId: 12,
-      name: "gtx 125",
-      category: "Graphic Cards",
-      price: 220,
-      image: "",
-      rating: 5,
-      stock: 25,
-      provider: null,
-      quantity:1,
-      total_amount:220
-    }
-  ],
-    quantity: 4,
-    Total: 125
-
-  };
-
+  cart: Cart;
   checkoutForm: FormGroup;
 
-  constructor( private formBuilder: FormBuilder,private cartService: CartService, private router: Router) { }
+  constructor( private formBuilder: FormBuilder,
+    private cartService: CartService, private router: Router,private checkoutService: CheckoutService) { }
 
   ngOnInit() {
-    //this.cart= JSON.parse(sessionStorage.getItem("currentCart"));
+    this.getCartSession();
     this.checkoutForm = this.formBuilder.group({
       name: ['', Validators.required],
       address: ['', Validators.required],
@@ -88,8 +36,27 @@ export class CheckoutComponent implements OnInit {
       console.log("invalid form try again");
       return;
     }
-  console.log("Order Complete");
-  this.router.navigate(['/confirmation']);
+    else{
+      this.checkoutService.submitOrder(this.checkoutForm.value)
+          .subscribe(
+              data => {
+                  console.log(data);
+                  console.log("Order Complete");
+                  //this.alertService.success('Registration successful', true);
+                  this.router.navigate(['/confirmation']);
+              },
+              error => {
+                  console.log(error);
+                  //this.alertService.error(error);
+                  //this.loading = false;
+              });
+  }
+      console.log("Order Complete");
+      this.router.navigate(['/confirmation']);
+    }
+
+  getCartSession(){
+    this.cart= this.cartService.getCart();
   }
 
 }
