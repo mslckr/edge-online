@@ -69,5 +69,9 @@ export class CartComponent implements OnInit {
 
   clearCart(){
     this.cartService.removeAll();
+    //testing
+    this.cart.cartItems=[];
+    this.cart.Total=0;
+    this.cart.quantity=0;
   }
 }
