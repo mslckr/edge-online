@@ -1,6 +1,7 @@
 package com.edge.service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,12 @@ public class ItemService {
 	public List<ProviderDTO> findAllProviders(){
 		List<Provider> list=providerRepository.findAll();
 		return list.stream().map(p -> providerMapper.toDto(p)).collect(Collectors.toList());
+	}
+	
+	//find all categories
+	public Set<String> findAllCategories() {
+		Set<String> set= itemRepository.findAll().stream().map(i -> i.getItem_cat()).collect(Collectors.toSet());
+		return set;
 	}
 
 }

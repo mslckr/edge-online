@@ -15,11 +15,13 @@ export class DataService {
 
 
   constructor(private http: HttpClient, private constants: ConstantsService) { 
-    //this.getAllItems();
   }
 
+  getAllItems(){
+    return this.http.get<any[]>(`${this.constants.itemsUrl}`);
+  }
   //Advance Search
-  getAllItems(name: string, category: string, provider: string, inStockOnly: boolean){
+  getFilterItems(name: string, category: string, provider: string, inStockOnly: boolean){
     let obs = this.http.get(`${this.constants.itemsUrl}?name=${name}&category=${category}&provider=${provider}&inStockOnly=${inStockOnly}`);
   return obs;
   }

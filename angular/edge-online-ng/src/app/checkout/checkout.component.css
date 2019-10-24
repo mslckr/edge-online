@@ -1,0 +1,27 @@
+
+.total-bar{
+    background-color: blue;
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+.checkout-form{
+    background-color: gray;
+    border: solid black;
+}
+.inform{
+    background-color: darkblue;
+    color:rgb(216, 216, 216);
+    font-size: 1.5rem;
+    border-bottom: solid black;
+    width: 100%;
+}
+form label{
+    color: black;
+}
+form input{
+    border: 2px solid black ;
+}
+.cart-list{
+    overflow: auto;
+    height: 600px;
+}
