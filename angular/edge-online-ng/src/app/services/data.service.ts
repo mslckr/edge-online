@@ -18,7 +18,7 @@ export class DataService {
   }
 
   getAllItems(){
-    return this.http.get(`${this.constants.itemsUrl}`);
+    return this.http.get<any[]>(`${this.constants.itemsUrl}`);
   }
   //Advance Search
   getFilterItems(name: string, category: string, provider: string, inStockOnly: boolean){
