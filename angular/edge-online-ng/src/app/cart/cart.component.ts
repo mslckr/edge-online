@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cart=this.cartService.createTestCart();
+    this.getCartSession();
   }
 
   getCartSession(){
