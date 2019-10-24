@@ -1,1 +1,23 @@
-Home Page!
+<div class="container">
+    <div class="header-container">
+        <div class="title-bar">
+            <a routerLink="/home"><img src="assets/EDGE_Online_Main_Logo.png"></a>
+            <div> The Frontline of E-Sports </div>
+        </div>
+        <div class="nav-bar">
+            <div class="nav-labels-container">
+                <a routerLink="/home">Home</a>
+                <a routerLink="/catalog">Catalog</a>
+                <a routerLink="/about"> About</a>
+            </div>
+            <a routerLink="/cart"><img src="assets/EDGE_Online_Cart.png"></a>
+        </div>
+    </div>
+    <div class="content-container">
+        <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    </div>
+    <div class="footer-container">
+        <span>Copyright 2019&nbsp; - &nbsp;</span>
+        <a routerLink="/about" class="clickable"> Team Edge</a>    
+    </div>
+</div>
