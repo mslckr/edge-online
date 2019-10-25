@@ -6,9 +6,10 @@
         </div>
         <div class="nav-bar">
             <div class="nav-labels-container">
-                <a routerLink="/home">Home</a>
-                <a routerLink="/catalog">Catalog</a>
-                <a routerLink="/about"> About</a>
+                <a *ngFor="let navBarItem of navBarItems; let i=index" routerLink="/{{navBarItem.route}}"
+                    [ngStyle]="{'color': currNavBarItemIndex === i ?  '#A9D162' : '#7DFBFB' }">
+                    {{ navBarItem.title }}
+                </a>
             </div>
             <a routerLink="/cart"><img src="assets/EDGE_Online_Cart.png"></a>
         </div>

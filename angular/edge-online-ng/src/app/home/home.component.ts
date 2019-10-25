@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   title = "The frontline of E-Sports"
+  navBarItemIndex = 0
 
   constructor() { }
 
