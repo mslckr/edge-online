@@ -13,7 +13,7 @@
 <div class="container my-2 overflow-auto">
     <div class="row">
         <div class="col-6 mb-2" *ngFor="let item of cart.cartItems" >
-            <app-cart-item [page]=title [(cart)]=cart [cartItem]=item></app-cart-item>
+            <app-cart-item [page]=title (cartUpdate)="removeCartItem($event)" [cartItem]=item></app-cart-item>
         </div>
     </div>
 </div>

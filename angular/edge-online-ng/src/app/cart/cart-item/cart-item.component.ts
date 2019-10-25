@@ -12,8 +12,7 @@ import { CartService } from '../../services/cart.service';
 export class CartItemComponent implements OnInit {
   @Input("cartItem") cartItem: CartItem;
   @Input("page") page: String;
-  @Input("cart") cart: Cart;
-  @Output() cartUpdate =new EventEmitter<Cart>();
+  @Output() cartUpdate =new EventEmitter();
 
   constructor(private cartService: CartService, private router: Router) { }
 
@@ -21,9 +20,9 @@ export class CartItemComponent implements OnInit {
   }
 
   removeCartItem(){
-    this.cart=this.cartService.removeCartItem(this.cartItem.itemId);
-    console.log(this.cart);
-    this.cartUpdate.emit(this.cart);
+    //this.cart=this.cartService.removeCartItem(this.cartItem.itemId);
+    
+    this.cartUpdate.emit(this.cartItem.itemId);
   }
 
 }
