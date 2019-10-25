@@ -7,48 +7,7 @@ import { Item } from '../model/item.model';
 })
 
 export class CartService {
-  cart: Cart= {
-    cartItems: [{
-      itemId: 4,
-      name: "gtx 4",
-      category: "Graphic Cards",
-      price: 150,
-      image: "",
-      rating: 5,
-      stock: 25,
-      provider: null,
-      quantity:2,
-      total_amount:150
-    },
-    {
-      itemId: 7,
-      name: "gtx 2",
-      category: "Graphic Cards",
-      price: 100,
-      image: "",
-      rating: 5,
-      stock: 25,
-      provider: null,
-      quantity:1,
-      total_amount:100
-    },
-    {
-      itemId: 10,
-      name: "gtx 25",
-      category: "Graphic Cards",
-      price: 200,
-      image: "",
-      rating: 5,
-      stock: 25,
-      provider: null,
-      quantity:1,
-      total_amount:200
-    }
-  ],
-    quantity: 3,
-    Total: 125
-
-  };
+  cart: Cart;
   constructor() { }
   
   createTestCart(): Cart{
@@ -56,17 +15,24 @@ export class CartService {
     return this.cart;
   }
   getCart(): Cart{
-    return JSON.parse(sessionStorage.getItem("currentCart"));
+    
+    if(sessionStorage.length > 0) {
+      return JSON.parse(sessionStorage.getItem("currentCart"));
+    }
+    else {
+      return new Cart();
+    }
   }
 
   //add item to our session cart
   addToCart(addedItem: Item){
-    let curr_cart: Cart = JSON.parse(sessionStorage.getItem("currentCart"));
+    
+    this.cart = this.getCart()
     let cartItem = new CartItem(addedItem);
 
     //if item is not in cart then add it to the cart
-    if(curr_cart.cartItems.find(i => i.itemId== cartItem.itemId) == undefined){
-      curr_cart.cartItems.push(cartItem);
+    if(this.cart.cartItems.find(i => i.itemId== cartItem.itemId) == undefined){
+      this.cart.cartItems.push(cartItem);
     }
     //else update the quantity and total of that cartItem
     else{
@@ -74,10 +40,10 @@ export class CartService {
       cartItem.total_amount = cartItem.price * cartItem.quantity;
     }
     //update the quantity and total of the cart
-      curr_cart.quantity +=1;
-      curr_cart.Total = cartItem.price * cartItem.quantity;
+    this.cart.quantity +=1;
+    this.cart.Total = cartItem.price * cartItem.quantity;
     //save changes
-    sessionStorage.setItem("currentCart",JSON.stringify(curr_cart));
+    sessionStorage.setItem("currentCart",JSON.stringify(this.cart));
     
   }
 

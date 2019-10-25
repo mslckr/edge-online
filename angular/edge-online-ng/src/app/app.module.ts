@@ -14,8 +14,11 @@ import { DataService } from './services/data.service';
 import { ConstantsService } from './services/constants.service';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
-import { ItemFilterPipe } from './item-filter.pipe';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { ItemFilterNamePipe } from './filters/item-filter-name.pipe';
+import { ItemFilterStockPipe } from './filters/item-filter-stock.pipe';
+import { ItemFilterProviderPipe } from './filters/item-filter-provider.pipe';
+import { ItemFilterCategoryPipe } from './filters/item-filter-category.pipe';
 
 @NgModule({
   declarations: [
@@ -26,8 +29,11 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
     CartComponent,
     CheckoutComponent,
     CartItemComponent,
-    ItemFilterPipe,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    ItemFilterNamePipe,
+    ItemFilterStockPipe,
+    ItemFilterProviderPipe,
+    ItemFilterCategoryPipe
   ],
   imports: [
     BrowserModule,

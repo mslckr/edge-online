@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../model/item.model';
 import { DataService } from '../services/data.service'
 import { Provider } from '../model/provider.model';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-catalog',
@@ -12,6 +13,7 @@ export class CatalogComponent implements OnInit {
 
   stockOnly = false
   title = "Catalog"
+  navBarItemIndex = 1
   itemNameFilter = ""
   categoryFilter = ""
   providerFilter = ""
@@ -28,7 +30,7 @@ export class CatalogComponent implements OnInit {
     // stock: number;
     // provider: Provider
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private cartService: CartService) { }
 
   currQuantity = "1";
 
@@ -61,8 +63,9 @@ export class CatalogComponent implements OnInit {
   }
 
   onAddClicked(itemToAdd) {
-    console.log(this.currQuantity);
-    console.log(itemToAdd);
+    for (var i = 0; i < parseInt(this.currQuantity); i++) {
+      this.cartService.addToCart(itemToAdd);
+    }
   }
 
   onSearchBarChanged(event: any) {

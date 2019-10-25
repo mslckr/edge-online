@@ -1,9 +1,9 @@
 import { Item } from './item.model';
 
 export class Cart {
-  cartItems: CartItem[];
-  quantity: number;
-  Total: number;
+  cartItems = [];
+  quantity = 0;
+  Total = 0;
 }
 
 export class CartItem extends Item{
