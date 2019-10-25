@@ -12,7 +12,11 @@
     <label class="stock-label" for="stock-btn">In stock only</label>
 </div>
 <div class="content">
-    <div *ngFor="let item of items | itemFilter:itemNameFilter:stockOnly:providerFilter:categoryFilter" class="item-container">
+    <div *ngFor="let item of items  | itemFilterName:itemNameFilter
+                                    | itemFilterStock:stockOnly
+                                    | itemFilterProvider:providerFilter
+                                    | itemFilterCategory:categoryFilter" 
+        class="item-container">
         <img src="../assets/{{item.image}}">
         <div class="item-detail-wrapper">
             <div class="item-top-container">
@@ -32,7 +36,5 @@
                 <div class="item-provider-label"> {{ item.provider.name }} </div>
             </div>
         </div>
-        
-     
     </div>
 </div>

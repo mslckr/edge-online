@@ -1,15 +1,11 @@
 # edge-online
 
-"Current Phase: 2"
+"Current Phase: 3"
 
 # Objectives:
 
-"Connect the front end to the back end"
-
-"Complete Home, catalog, cart, and checkout pages"
-
-"Prepare for admin pages if time allows"
+"TBD"
 
 # Version date
 
-"10/23/2019 3:15pm"
+"10/24/2019 4:45pm"

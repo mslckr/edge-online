@@ -28,11 +28,15 @@
 }
 
 .nav-bar > #category-select {
+    margin-top: auto;
+    margin-bottom: auto;
     margin-right: 10px;
     width: 10%;
 }
 
 .nav-bar > #provider-select {
+    margin-top: auto;
+    margin-bottom: auto;
     margin-right: 10px;
     width: 10%;
 }
@@ -100,12 +104,15 @@
 
 .item-top-container > button {
     border-radius: 7px;
-    background-color: #0018E6;
-    border: none;
+    background-color: #001AF5;
+    border: 2px solid #001AA0;
     color: white;
     padding-left: 25px;
     padding-right: 25px;
 }
+
+.item-top-container > button:hover { opacity: 0.8; }
+.item-top-container > button:focus { outline:0; }
 
 .item-bottom-container {
     display: flex;
@@ -128,7 +135,7 @@
 }
 
 .item-category-label {
-    background-color: #0018E6;
+    background-color: #001AF5;
     border-radius: 7px;
     color: white;
     padding-left: 15px;

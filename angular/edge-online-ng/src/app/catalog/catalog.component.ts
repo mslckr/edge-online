@@ -13,6 +13,7 @@ export class CatalogComponent implements OnInit {
 
   stockOnly = false
   title = "Catalog"
+  navBarItemIndex = 1
   itemNameFilter = ""
   categoryFilter = ""
   providerFilter = ""
