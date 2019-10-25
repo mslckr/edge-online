@@ -1,7 +1,8 @@
 <div class="root-container">
     <div class="header-container">
-        <div class="title-bar">
-            <a routerLink="/home"><img src="assets/EDGE_Online_Main_Logo.png"></a>
+        <div class="title-bar" [ngStyle]="{'grid-template-columns': currNavBarItemIndex === 0 ? '1fr 2fr' : '1fr 1fr 1fr'}">
+            <a routerLink="/home"><img src="assets/EDGE_Online_Main_Logo.png"
+                [ngStyle]="{'width': currNavBarItemIndex === 0 ? '98%' : '40%'}"></a>
             <div> {{ title }} </div>
         </div>
         <div class="nav-bar">

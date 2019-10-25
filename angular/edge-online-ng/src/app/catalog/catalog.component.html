@@ -15,7 +15,8 @@
     <div *ngFor="let item of items  | itemFilterName:itemNameFilter
                                     | itemFilterStock:stockOnly
                                     | itemFilterProvider:providerFilter
-                                    | itemFilterCategory:categoryFilter" class="item-container">
+                                    | itemFilterCategory:categoryFilter" 
+        class="item-container">
         <img src="../assets/{{item.image}}">
         <div class="item-detail-wrapper">
             <div class="item-top-container">
