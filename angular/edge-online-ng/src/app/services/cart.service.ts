@@ -27,56 +27,60 @@ export class CartService {
   //add item to our session cart
   addToCart(addedItem: Item){
     
-    this.cart = this.getCart()
+    this.cart = this.getCart();
     let cartItem = new CartItem(addedItem);
 
     //if item is not in cart then add it to the cart
-    if(this.cart.cartItems.find(i => i.itemId== cartItem.itemId) == undefined){
+    let cartItemIdx = this.cart.cartItems.findIndex(i => i.itemId== cartItem.itemId)
+    if(cartItemIdx == -1){
       this.cart.cartItems.push(cartItem);
     }
     //else update the quantity and total of that cartItem
     else{
-      cartItem.quantity +=1;
-      cartItem.total_amount = cartItem.price * cartItem.quantity;
+      this.cart.cartItems[cartItemIdx].quantity +=1;
+      this.cart.cartItems[cartItemIdx].total_amount = cartItem.price * this.cart.cartItems[cartItemIdx].quantity;
     }
     //update the quantity and total of the cart
     this.cart.quantity +=1;
-    this.cart.Total = cartItem.price * cartItem.quantity;
+    this.cart.Total += cartItem.price;
     //save changes
     sessionStorage.setItem("currentCart",JSON.stringify(this.cart));
     
   }
 
   // remove cart item from our cart
-  removeCartItem(cartItemId: number){
-      let curr_cart: Cart = JSON.parse(sessionStorage.getItem("currentCart"));
-      let removeCartItem: CartItem =curr_cart.cartItems.find(i => i.itemId == cartItemId);
-
-      if(removeCartItem != undefined){
+  removeCartItem(cartItemId: number): Cart{
+      //this.cart = this.getCart()
+      
+      let rmvCartItemIdx =this.cart.cartItems.findIndex(i => i.itemId == cartItemId);
+      
+      if(rmvCartItemIdx != -1){
+        this.cart.quantity -= 1;
+        this.cart.Total -= this.cart.cartItems[rmvCartItemIdx].price;
+        
         //if the cartitem to remove quantity is greater than 1, quantity-- and totalamount - price
-        if(removeCartItem.quantity > 1){
-          curr_cart.cartItems[removeCartItem.itemId].quantity -=1;
-          curr_cart.cartItems[removeCartItem.itemId].total_amount -= removeCartItem.price;
+        if(this.cart.cartItems[rmvCartItemIdx].quantity > 1){
+          this.cart.cartItems[rmvCartItemIdx].quantity -=1;
+          this.cart.cartItems[rmvCartItemIdx].total_amount -= this.cart.cartItems[rmvCartItemIdx].price;
         }
         //
         else{
-          curr_cart.cartItems.splice(removeCartItem.itemId);
+          this.cart.cartItems.splice(rmvCartItemIdx,1);
         }
-
-        curr_cart.quantity -= 1;
-        curr_cart.Total -= removeCartItem.price;
-        console.log(curr_cart);
-        sessionStorage.setItem("currentCart",JSON.stringify(curr_cart));
-       
-        this.cart=curr_cart;
+        
+        sessionStorage.setItem("currentCart",JSON.stringify(this.cart));
       }
+      return this.cart;
   }
 
   removeAll(): Cart{
-    this.cart.cartItems=[];
-    this.cart.Total=0;
-    this.cart.quantity=0;
-    sessionStorage.clear();
+    this.cart = this.getCart();
+    if(this.cart.quantity > 0){
+      this.cart.cartItems=[];
+      this.cart.Total=0;
+      this.cart.quantity=0;
+      sessionStorage.clear();
+    }
     return this.cart;
   }
 

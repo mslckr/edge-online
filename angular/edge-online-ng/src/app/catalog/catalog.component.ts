@@ -42,14 +42,14 @@ export class CatalogComponent implements OnInit {
         item.name = i.item_name;
         item.category = i.item_cat;
         item.price = i.item_price;
-        item.image = i.item_img.substring(7);
+        item.image = i.item_img;
         item.rating = i.item_rating;
         item.stock = i.item_stock;
         item.provider = new Provider(
           i.provider.id, 
           i.provider.prov_name, 
           i.provider.prov_addr, 
-          i.provider.prov_logo.substring(7), 
+          i.provider.prov_logo, 
           i.provider.prov_link);
         this.providers.add(i.provider.prov_name);
         this.categories.add(i.item_cat);

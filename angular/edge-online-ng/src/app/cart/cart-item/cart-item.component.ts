@@ -1,6 +1,6 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
-import { CartItem } from '../../model/cart.model';
+import { CartItem, Cart } from '../../model/cart.model';
 import { CartService } from '../../services/cart.service';
 
 
@@ -12,6 +12,7 @@ import { CartService } from '../../services/cart.service';
 export class CartItemComponent implements OnInit {
   @Input("cartItem") cartItem: CartItem;
   @Input("page") page: String;
+  @Output() cartUpdate =new EventEmitter();
 
   constructor(private cartService: CartService, private router: Router) { }
 
@@ -19,7 +20,9 @@ export class CartItemComponent implements OnInit {
   }
 
   removeCartItem(){
-    this.cartService.removeCartItem(this.cartItem.itemId);
+    //this.cart=this.cartService.removeCartItem(this.cartItem.itemId);
+    
+    this.cartUpdate.emit(this.cartItem.itemId);
   }
 
 }
