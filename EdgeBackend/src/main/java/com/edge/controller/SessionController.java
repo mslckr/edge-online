@@ -81,28 +81,28 @@ public class SessionController {
 					return ResponseEntity.status(HttpStatus.OK).body(checkoutDTO);
 				}
 
-			// method to create orderLine of orders and send out confirmation
-				@PostMapping("/orders")
-				public ResponseEntity<OrderConfirmationDTO> saveOrder(@CookieValue(name = "JSESSIONID", required = false) String cookieValue, @RequestBody OrderLineDTO order) {
-					CartDTO cartDTO = cartStore.get(cookieValue);
-					OrderConfirmationDTO saveOrder = orderService.submitOrders(order, cartDTO);
-					cartStore.remove(cookieValue);
-					checkoutStore.remove(cookieValue);
-					return ResponseEntity.ok().body(saveOrder);
-				}
+//			// method to create orderLine of orders and send out confirmation
+//				@PostMapping("/orders")
+//				public ResponseEntity<OrderConfirmationDTO> saveOrder(@CookieValue(name = "JSESSIONID", required = false) String cookieValue, @RequestBody OrderLineDTO order) {
+//					CartDTO cartDTO = cartStore.get(cookieValue);
+//					OrderConfirmationDTO saveOrder = orderService.submitOrders(order, cartDTO);
+//					cartStore.remove(cookieValue);
+//					checkoutStore.remove(cookieValue);
+//					return ResponseEntity.ok().body(saveOrder);
+//				}
 
-				// method to return all the orderLines
-				@GetMapping("/orders")
-				public ResponseEntity<List<OrderLineDTO>> fetchOrders(
-						@CookieValue(name = "JSESSIONID", required = false) String cookieValue) {
-					List<OrderLineDTO> orderLines = orderService.fetchAllOrderLines();
-					return ResponseEntity.ok().body(orderLines);
-				}
-
-			// method to ship an order based on orderline id.
-				@PostMapping("/orders/{id}")
-				public ResponseEntity<OrderLineDTO> shipOrders(@CookieValue(name = "JSESSIONID", required = false) String cookieValue, @PathVariable(name = "id") int orderLineId) {
-					OrderLineDTO orderline = orderService.completeOrders(orderLineId);
-					return ResponseEntity.ok().body(orderline);
-				}
+//				// method to return all the orderLines
+//				@GetMapping("/orders")
+//				public ResponseEntity<List<OrderLineDTO>> fetchOrders(
+//						@CookieValue(name = "JSESSIONID", required = false) String cookieValue) {
+//					List<OrderLineDTO> orderLines = orderService.fetchAllOrderLines();
+//					return ResponseEntity.ok().body(orderLines);
+//				}
+//
+//			// method to ship an order based on orderline id.
+//				@PostMapping("/orders/{id}")
+//				public ResponseEntity<OrderLineDTO> shipOrders(@CookieValue(name = "JSESSIONID", required = false) String cookieValue, @PathVariable(name = "id") int orderLineId) {
+//					OrderLineDTO orderline = orderService.completeOrders(orderLineId);
+//					return ResponseEntity.ok().body(orderline);
+//				}
 }
