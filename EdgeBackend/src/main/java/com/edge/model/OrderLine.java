@@ -3,6 +3,7 @@ package com.edge.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,8 +22,10 @@ public class OrderLine implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String user_name;
+	@Column(name="user_addr")
 	private String user_address;
 	private int order_stage;
+	@Column(name="user_card_num")
 	private String user_card_no;
 	private int user_card_sec;
 	private String user_card_expdate;	//yyyy-mm-dd format
@@ -83,12 +86,12 @@ public class OrderLine implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public Set<Order> getOrders() {
-		return orders;
-	}
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
-	}
+//	public Set<Order> getOrders() {
+//		return orders;
+//	}
+//	public void setOrders(Set<Order> orders) {
+//		this.orders = orders;
+//	}
 	
 	
 }

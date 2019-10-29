@@ -19,6 +19,8 @@ import { ItemFilterNamePipe } from './filters/item-filter-name.pipe';
 import { ItemFilterStockPipe } from './filters/item-filter-stock.pipe';
 import { ItemFilterProviderPipe } from './filters/item-filter-provider.pipe';
 import { ItemFilterCategoryPipe } from './filters/item-filter-category.pipe';
+import { AlertService } from './services/alert.service'
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ItemFilterCategoryPipe } from './filters/item-filter-category.pipe';
     ItemFilterNamePipe,
     ItemFilterStockPipe,
     ItemFilterProviderPipe,
-    ItemFilterCategoryPipe
+    ItemFilterCategoryPipe,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { ItemFilterCategoryPipe } from './filters/item-filter-category.pipe';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [DataService, ConstantsService],
+  providers: [DataService, AlertService, ConstantsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

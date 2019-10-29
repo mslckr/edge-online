@@ -3,7 +3,7 @@ import { Item } from '../model/item.model'
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 //import { Filter, Pagination } from './configClasses.data';
 import { Provider } from '../model/provider.model';
-import { Order } from '../model/order.model';
+import { OrderLine } from '../model/order.model';
 import { Subject, Observable } from 'rxjs';
 import { ConstantsService} from './constants.service';
 
@@ -101,11 +101,11 @@ export class DataService {
   }
 
   getOrders() {
-    return this.http.get<Order[]>(this.constants.ordersUrl);
+    return this.http.get<OrderLine[]>(this.constants.ordersUrl);
     //.subscribe(data => this.orders = data);
   }
 
-  createOrder(order: Order) {
+  createOrder(order: OrderLine) {
     return this.http.post<any>(this.constants.ordersUrl, {
       name: order.name,
       address: order.address,
@@ -119,7 +119,7 @@ export class DataService {
     });
   }*/
 
-  shipOrder(order: Order) {
+  shipOrder(order: OrderLine) {
    return this.http.post(this.constants.ordersUrl + '/' + order.orderId, null, { withCredentials: true });
   }
 }
