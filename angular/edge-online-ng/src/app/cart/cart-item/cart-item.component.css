@@ -9,6 +9,8 @@
     border-bottom: solid black;
     font-weight: bolder;
     font-size: 1.4rem;
+    overflow: auto;
+    height: 100px;
 }
 
 .price-block{
@@ -17,4 +19,7 @@
     color: white;
     font-size: 1.2rem;
     border-radius: 15px
+}
+.price-block span{
+    text-overflow: ellipsis;
 }

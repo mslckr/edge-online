@@ -61,56 +61,56 @@ public class OrderService {
 	}
 	
 	//
-	public OrderConfirmationDTO submitOrders (OrderLineDTO orderLine, CartDTO cart) {
-		
-		try{
-			if(orderLine.getOrder_stage() != 10)
-				throw new Exception();
-		}
-		catch(Exception e) {
-			System.out.println("ERROR: Invalid Order Stage Code");
-		}
-		
-		OrderConfirmationDTO orderConfirmation= new OrderConfirmationDTO();
-					
-		OrderLine newOrderLine= new OrderLine();
-			
-			CheckoutDTO payment= orderLine.getPayment();
-			List<Item> allItems= itemRepository.findAll();
-			Map<Long, Item> itemsMap= allItems.stream().collect(Collectors.toMap(Item::getId, i -> i));
-			
-			newOrderLine.setUser_name(orderLine.getUser_name());
-			newOrderLine.setUser_address(orderLine.getUser_address());
-			newOrderLine.setUser_card_no(payment.getCardNumber());
-			newOrderLine.setUser_card_expdate(payment.getCardExpiry());
-			newOrderLine.setUser_card_sec(payment.getCardSecurityCode());
-			
-			
-			List<OrderDTO> fetchedOrders= fetchOrdersInLine(orderLineMapper.toEntity(orderLine));
-			for (OrderDTO order : fetchedOrders) {
-				if(itemService.findOne(order.getItem().getId()) == null) {
-					newOrderLine.setOrder_stage(20);
-					newOrderLine.setAuth_code(0);
-					orderConfirmation.setOrderId(orderLine.getId());
-					orderConfirmation.setAuth_code(orderLine.getAuth_code());
-					orderConfirmation.setAmount(cart.getTotalPrice());
-					return orderConfirmation;
-				}
-			}
-			newOrderLine.setOrder_stage(11);
-			
-			OrderLine savedOrderLine =orderLineRepository.save(newOrderLine);
-			
-			List<ItemSelectionDTO> items =orderLine.getItems();
-			Set<Order> orders= new HashSet<>();
-			for(ItemSelectionDTO i: items)
-				orders.add(new Order(itemsMap.get(i.getItem_id()), i.getQuantity(), savedOrderLine,false));
-			
-			orderConfirmation.setOrderId(savedOrderLine.getId());
-			orderConfirmation.setAuth_code(savedOrderLine.getAuth_code());
-			orderConfirmation.setAmount(cart.getTotalPrice());
-			return orderConfirmation;
-	}
+//	public OrderConfirmationDTO submitOrders (OrderLineDTO orderLine, CartDTO cart) {
+//		
+//		try{
+//			if(orderLine.getOrder_stage() != 10)
+//				throw new Exception();
+//		}
+//		catch(Exception e) {
+//			System.out.println("ERROR: Invalid Order Stage Code");
+//		}
+//		
+//		OrderConfirmationDTO orderConfirmation= new OrderConfirmationDTO();
+//					
+//		OrderLine newOrderLine= new OrderLine();
+//			
+//			CheckoutDTO payment= orderLine.getPayment();
+//			List<Item> allItems= itemRepository.findAll();
+//			Map<Long, Item> itemsMap= allItems.stream().collect(Collectors.toMap(Item::getId, i -> i));
+//			
+//			newOrderLine.setUser_name(orderLine.getUser_name());
+//			newOrderLine.setUser_address(orderLine.getUser_address());
+//			newOrderLine.setUser_card_no(payment.getCardNumber());
+//			newOrderLine.setUser_card_expdate(payment.getCardExpiry());
+//			newOrderLine.setUser_card_sec(payment.getCardSecurityCode());
+//			
+//			
+//			List<OrderDTO> fetchedOrders= fetchOrdersInLine(orderLineMapper.toEntity(orderLine));
+//			for (OrderDTO order : fetchedOrders) {
+//				if(itemService.findOne(order.getItem().getId()) == null) {
+//					newOrderLine.setOrder_stage(20);
+//					newOrderLine.setAuth_code(0);
+//					orderConfirmation.setOrderId(orderLine.getId());
+//					orderConfirmation.setAuth_code(orderLine.getAuth_code());
+//					orderConfirmation.setAmount(cart.getTotalPrice());
+//					return orderConfirmation;
+//				}
+//			}
+//			newOrderLine.setOrder_stage(11);
+//			
+//			OrderLine savedOrderLine =orderLineRepository.save(newOrderLine);
+//			
+//			List<ItemSelectionDTO> items =orderLine.getItems();
+//			Set<Order> orders= new HashSet<>();
+//			for(ItemSelectionDTO i: items)
+//				orders.add(new Order(itemsMap.get(i.getItem_id()), i.getQuantity(), savedOrderLine,false));
+//			
+//			orderConfirmation.setOrderId(savedOrderLine.getId());
+//			orderConfirmation.setAuth_code(savedOrderLine.getAuth_code());
+//			orderConfirmation.setAmount(cart.getTotalPrice());
+//			return orderConfirmation;
+//	}
 	
 	//Complete orderline with orderline id
 	public OrderLineDTO completeOrders(int orderLine_id) {
@@ -144,8 +144,58 @@ public class OrderService {
 		List<Order> ordersToDelete = orderRepository.findAllByOrderline_id(orderLine.getId());
 		orderRepository.deleteAll(ordersToDelete);
 		
-		orderLine.setOrder_stage(21);;
+		orderLine.setOrder_stage(21);
 	}
 
+	public OrderConfirmationDTO submitOrder(OrderLineDTO orderLine) {
+		
+		try{
+			if(orderLine.getOrder_stage() != 10)
+				throw new Exception();
+		}
+		catch(Exception e) {
+			System.out.println("ERROR: Invalid Order Stage Code");
+		}
+		
+		OrderConfirmationDTO orderConfirmation= new OrderConfirmationDTO();
+					
+		OrderLine newOrderLine= orderLineMapper.toEntity(orderLine);
+			
+			//CheckoutDTO payment= orderLine.getPayment();
+//			
+//			newOrderLine.setUser_name(orderLine.getUser_name());
+//			newOrderLine.setUser_address(orderLine.getUser_address());
+//			newOrderLine.setUser_card_no(payment.getCardNumber());
+//			newOrderLine.setUser_card_expdate(payment.getCardExpiry());
+//			newOrderLine.setUser_card_sec(payment.getCardSecurityCode());
+			
+			
+			List<OrderDTO> fetchedOrders= fetchOrdersInLine(orderLineMapper.toEntity(orderLine));
+			for (OrderDTO order : fetchedOrders) {
+				if(itemService.findOne(order.getItem().getId()) == null) {
+					newOrderLine.setOrder_stage(20);
+					orderConfirmation.setAuth_code(0);
+					
+					orderConfirmation.setOrderId(orderLine.getId());
+					//orderConfirmation.setAuth_code(orderLine.getAuth_code());
+					orderConfirmation.setAmount(orderLine.getCart().getTotalPrice());
+					
+					return orderConfirmation;
+				}
+			}
+			orderLine.setOrder_stage(11);
+			
+			OrderLine savedOrderLine =orderLineRepository.save(newOrderLine);
+			
+			/*List<ItemSelectionDTO> items =orderLine.getItems();
+			Set<Order> orders= new HashSet<>();
+			for(ItemSelectionDTO i: items)
+				orders.add(new Order(itemsMap.get(i.getItem_id()), i.getQuantity(), savedOrderLine,false));
+			*/
+			orderConfirmation.setOrderId(savedOrderLine.getId());
+			orderConfirmation.setAuth_code(savedOrderLine.getAuth_code());
+			orderConfirmation.setAmount(orderLine.getCart().getTotalPrice());
+			return orderConfirmation;
+	}
 
 }

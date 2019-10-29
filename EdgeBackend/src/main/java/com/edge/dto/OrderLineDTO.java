@@ -1,7 +1,5 @@
 package com.edge.dto;
 
-import java.util.List;
-
 import javax.validation.constraints.NotNull;
 
 
@@ -17,8 +15,8 @@ public class OrderLineDTO {
 	private String user_card_expdate;	//yyyy-mm-dd format
 	CheckoutDTO payment;
 	private int auth_code;
+	private CartDTO cart;
 	private OrderConfirmationDTO confirmation;
-	private List<ItemSelectionDTO> items;
 	
 	public int getId() {
 		return id;
@@ -80,11 +78,12 @@ public class OrderLineDTO {
 	public void setPayment(CheckoutDTO payment) {
 		this.payment = payment;
 	}
-	public List<ItemSelectionDTO> getItems() {
-		return items;
+
+	public CartDTO getCart() {
+		return cart;
 	}
-	public void setItems(List<ItemSelectionDTO> items) {
-		this.items = items;
+	public void setCart(CartDTO cart) {
+		this.cart = cart;
 	}
 	
 	
