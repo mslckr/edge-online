@@ -3,6 +3,7 @@ package com.edge.dto;
 import javax.validation.constraints.NotNull;
 
 import com.edge.model.Item;
+import com.edge.model.OrderLine;
 
 public class OrderDTO {
 
