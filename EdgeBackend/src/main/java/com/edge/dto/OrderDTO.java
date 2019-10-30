@@ -9,6 +9,7 @@ public class OrderDTO {
 	@NotNull
 	private Item item;
 	private int amount;
+
 	private boolean complete= false;
 	
 	public int getAmount() {

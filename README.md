@@ -4,7 +4,9 @@
 
 # Objectives:
 
-"TBD"
+"Complete the Confirmation and About pages"
+
+"Adjust Pages as specified in 'phaseMarkups.pdf' in documentation folder"
 
 # Version date
 
