@@ -18,10 +18,8 @@ export class OrderLine {
   public user_card_no: string;
   public user_card_sec: number;
   public user_card_expdate: string
-  //public payment: Payment;
   public order_stage: number=10;
   public auth_code: number;
   public cart: Cart;
-  //public orderConfirmation: OrderConfirmation;
   }
 
