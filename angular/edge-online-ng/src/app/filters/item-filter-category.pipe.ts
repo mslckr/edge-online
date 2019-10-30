@@ -9,7 +9,7 @@ export class ItemFilterCategoryPipe implements PipeTransform {
   transform(items: Item[], categoryFilter: string): any {
     if (categoryFilter != "") {
       return items.filter(i => {
-        return i.category === categoryFilter;
+        return i.item_cat === categoryFilter;
       });
     }
     return items;

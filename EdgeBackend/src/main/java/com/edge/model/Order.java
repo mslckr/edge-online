@@ -2,7 +2,6 @@ package com.edge.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CascadeType;
+
 
 @Entity
 @Table(name="orders")
@@ -23,7 +25,7 @@ public class Order implements Serializable{
 	private long id;
 
 	@OneToOne
-	//@Column(name="item_id")
+	@JoinColumn(name = "item_id")
 	private Item item;
 	
 	private int amount;

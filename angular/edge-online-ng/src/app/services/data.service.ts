@@ -68,7 +68,7 @@ export class DataService {
       price: item.price, stock: item.stock, rating: item.rating,
       provider: item.provider ? item.provider.providerId : 0
     };*/
-    return this.http.put(this.constants.itemsUrl + '/' + item.itemId, item );
+    return this.http.put(this.constants.itemsUrl + '/' + item.id, item );
   }
 
   replaceProvider(prov: Provider) {

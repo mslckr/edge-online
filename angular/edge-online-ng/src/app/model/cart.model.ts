@@ -21,7 +21,7 @@ export class CartItem {
     // this.item.stock= item.stock;
     // this.item.provider= item.provider;
     this.quantity=1;
-    this.total_amount= item.price * this.quantity;
+    this.total_amount= item.item_price * this.quantity;
   }
 }
 

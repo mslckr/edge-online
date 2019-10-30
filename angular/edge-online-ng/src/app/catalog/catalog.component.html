@@ -17,22 +17,22 @@
                                     | itemFilterProvider:providerFilter
                                     | itemFilterCategory:categoryFilter" 
         class="item-container">
-        <img src="../assets/{{item.image}}">
+        <img src="../assets/{{item.item_img}}">
         <div class="item-detail-wrapper">
             <div class="item-top-container">
-                <div class="item-label">{{ item.name }}</div>
+                <div class="item-label">{{ item.item_name }}</div>
                 <input (keyup)="onQuantityChanged($event)" value="1" size="4">
                 <button (click)="onAddClicked(item)">ADD</button>
             </div>
             <div class="item-bottom-container">
-                <div class="item-rating-label"> {{ item.rating }} </div>
+                <div class="item-rating-label"> {{ item.item_rating }} </div>
                 <img *ngIf="item.rating < 0.5" src="../assets/EDGE_Online_Rating_0.png">
                 <img *ngIf="item.rating > 0.4 && item.rating < 1.5" src="../assets/EDGE_Online_Rating_1.png">
                 <img *ngIf="item.rating > 1.4 && item.rating < 2.5" src="../assets/EDGE_Online_Rating_2.png">
                 <img *ngIf="item.rating > 2.4 && item.rating < 3.5" src="../assets/EDGE_Online_Rating_3.png">
                 <img *ngIf="item.rating > 3.4 && item.rating < 4.5" src="../assets/EDGE_Online_Rating_4.png">
                 <img *ngIf="item.rating > 4.4 && item.rating <= 5" src="../assets/EDGE_Online_Rating_5.png">
-                <div class="item-category-label"> {{ item.category }} </div>
+                <div class="item-category-label"> {{ item.item_cat }} </div>
                 <div class="item-provider-label"> {{ item.provider.name }} </div>
             </div>
         </div>

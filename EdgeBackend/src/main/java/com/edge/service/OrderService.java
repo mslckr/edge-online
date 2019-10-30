@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edge.dto.CartDTO;
-import com.edge.dto.CheckoutDTO;
 import com.edge.dto.ItemSelectionDTO;
 import com.edge.dto.OrderConfirmationDTO;
 import com.edge.dto.OrderDTO;
@@ -119,7 +118,7 @@ public class OrderService {
 			List<ItemSelectionDTO> items= cart.getCartItems();
 			Set<Order> orders= new HashSet<>();
 			for(ItemSelectionDTO i: items) {
-				System.out.println(i.toString());
+				System.out.println("item: "+i.toString()+"\t quantity: "+i.getQuantity());
 				orders.add(new Order(i.getQuantity(), false, i.getItem(), savedOrderLine));
 			}
 					

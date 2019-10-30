@@ -18,7 +18,6 @@ public class OrderLineDTO {
 	private String user_card_no;
 	private int user_card_sec;
 	private Date user_card_expdate;	//yyyy-mm-dd format
-	//CheckoutDTO payment;
 	private int auth_code;
 	private Set<Order> orders;
 	private CartDTO cart;

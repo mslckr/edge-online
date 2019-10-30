@@ -9,7 +9,7 @@ export class ItemFilterStockPipe implements PipeTransform {
   transform(items: Item[], stockOnly: boolean): any {
     if (stockOnly) {
       return items.filter(i => {
-        return i.stock > 0;
+        return i.item_stock > 0;
       });
     }
     return items;

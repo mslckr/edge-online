@@ -31,18 +31,18 @@ export class CartService {
     let cartItem = new CartItem(addedItem);
     console.log(cartItem.item);
     //if item is not in cart then add it to the cart
-    let cartItemIdx = this.cart.cartItems.findIndex((i: CartItem) => i.item.itemId== cartItem.item.itemId)
+    let cartItemIdx = this.cart.cartItems.findIndex((i: CartItem) => i.item.id== cartItem.item.id)
     if(cartItemIdx == -1){
       this.cart.cartItems.push(cartItem);
     }
     //else update the quantity and total of that cartItem
     else{
       this.cart.cartItems[cartItemIdx].quantity +=1;
-      this.cart.cartItems[cartItemIdx].total_amount = cartItem.item.price * this.cart.cartItems[cartItemIdx].quantity;
+      this.cart.cartItems[cartItemIdx].total_amount = cartItem.item.item_price * this.cart.cartItems[cartItemIdx].quantity;
     }
     //update the quantity and total of the cart
     this.cart.quantity +=1;
-    this.cart.total += cartItem.item.price;
+    this.cart.total += cartItem.item.item_price;
     //save changes
     sessionStorage.setItem("currentCart",JSON.stringify(this.cart));
     
