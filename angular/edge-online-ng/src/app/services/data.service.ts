@@ -107,9 +107,9 @@ export class DataService {
 
   createOrder(order: OrderLine) {
     return this.http.post<any>(this.constants.ordersUrl, {
-      name: order.name,
-      address: order.address,
-      payment: order.payment
+      user_name: order.user_name,
+      user_address: order.user_address,
+      
     }, { withCredentials: true });
   }
    /* .subscribe(data => {

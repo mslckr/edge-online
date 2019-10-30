@@ -42,11 +42,15 @@ export class CheckoutComponent implements OnInit {
 
    makeOrder(formData: any): OrderLine{
      let order = new OrderLine();
-     order.name= formData.name;
-     order.address= formData.address;
-     order.payment= new Payment(formData.cardnumber, formData.securitycode, formData.exp_mm, formData.exp_yy);
+     order.user_name= formData.name;
+     order.user_address= formData.address;
+     //order.payment= new Payment(formData.cardnumber, formData.securitycode, formData.exp_mm, formData.exp_yy);
+     order.user_card_no= formData.cardnumber;
+     order.user_card_sec= formData.securitycode;
+     order.user_card_expdate= `20${formData.exp_yy}-${formData.exp_mm}-00`;
+     order.auth_code=10;
      order.cart= this.cartService.getCart();
-     order.orderConfirmation= new OrderConfirmation();
+     //order.orderConfirmation= new OrderConfirmation();
     return order;
    }
   onSubmit(){
@@ -57,6 +61,7 @@ export class CheckoutComponent implements OnInit {
       return;
     }
     else{
+      console.log(this.makeOrder(this.checkoutForm.value));
       this.loading = true;
       this.checkoutService.submitOrder(this.makeOrder(this.checkoutForm.value))
           .subscribe(

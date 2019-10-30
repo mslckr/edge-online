@@ -29,20 +29,20 @@ export class CartService {
     
     this.cart = this.getCart();
     let cartItem = new CartItem(addedItem);
-
+    console.log(cartItem.item);
     //if item is not in cart then add it to the cart
-    let cartItemIdx = this.cart.cartItems.findIndex(i => i.itemId== cartItem.itemId)
+    let cartItemIdx = this.cart.cartItems.findIndex((i: CartItem) => i.item.itemId== cartItem.item.itemId)
     if(cartItemIdx == -1){
       this.cart.cartItems.push(cartItem);
     }
     //else update the quantity and total of that cartItem
     else{
       this.cart.cartItems[cartItemIdx].quantity +=1;
-      this.cart.cartItems[cartItemIdx].total_amount = cartItem.price * this.cart.cartItems[cartItemIdx].quantity;
+      this.cart.cartItems[cartItemIdx].total_amount = cartItem.item.price * this.cart.cartItems[cartItemIdx].quantity;
     }
     //update the quantity and total of the cart
     this.cart.quantity +=1;
-    this.cart.Total += cartItem.price;
+    this.cart.total += cartItem.item.price;
     //save changes
     sessionStorage.setItem("currentCart",JSON.stringify(this.cart));
     
@@ -52,16 +52,16 @@ export class CartService {
   removeCartItem(cartItemId: number): Cart{
       //this.cart = this.getCart()
       
-      let rmvCartItemIdx =this.cart.cartItems.findIndex(i => i.itemId == cartItemId);
+      let rmvCartItemIdx =this.cart.cartItems.findIndex(i => i.item.itemId == cartItemId);
       
       if(rmvCartItemIdx != -1){
         this.cart.quantity -= 1;
-        this.cart.Total -= this.cart.cartItems[rmvCartItemIdx].price;
+        this.cart.total -= this.cart.cartItems[rmvCartItemIdx].item.price;
         
         //if the cartitem to remove quantity is greater than 1, quantity-- and totalamount - price
         if(this.cart.cartItems[rmvCartItemIdx].quantity > 1){
           this.cart.cartItems[rmvCartItemIdx].quantity -=1;
-          this.cart.cartItems[rmvCartItemIdx].total_amount -= this.cart.cartItems[rmvCartItemIdx].price;
+          this.cart.cartItems[rmvCartItemIdx].total_amount -= this.cart.cartItems[rmvCartItemIdx].item.price;
         }
         //
         else{
@@ -77,7 +77,7 @@ export class CartService {
     this.cart = this.getCart();
     if(this.cart.quantity > 0){
       this.cart.cartItems=[];
-      this.cart.Total=0;
+      this.cart.total=0;
       this.cart.quantity=0;
       sessionStorage.clear();
     }

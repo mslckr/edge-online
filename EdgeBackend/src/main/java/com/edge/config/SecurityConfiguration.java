@@ -37,10 +37,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			// configuration to allow basic authentication and disable CSRF
 			http.csrf().disable()
 			// disable CSRF support. CSRF is a vulnerability in web applications. Generally
-			// we dont need CSRF
-			// (https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) in APIs
+		
 			.authorizeRequests()
-			.antMatchers("/js/**", "/css/**", "/img/**", "/webjars/**", "/api/**").permitAll() // allow all webjars (bootstrap and jquery), css, images and javascript files without security
+			.antMatchers( "/api/**").permitAll() // allow without security
 			.anyRequest().authenticated()// authorize requests only if they are successfully authenticated
 			.and().httpBasic(); // also allow http basic authentication
 					

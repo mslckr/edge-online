@@ -2,6 +2,7 @@ package com.edge.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -22,7 +23,7 @@ public class Order implements Serializable{
 	private long id;
 
 	@OneToOne
-	@JoinColumn(name="item_id")
+	//@Column(name="item_id")
 	private Item item;
 	
 	private int amount;
@@ -36,16 +37,16 @@ public class Order implements Serializable{
 	public Order() {}
 	
 
-	public Order(long id, Item item, int amount, OrderLine orderline, boolean complete) {
-		super();
-		this.id = id;
-		this.item = item;
-		this.amount = amount;
-		this.orderline = orderline;
-		this.complete = complete;
-	}
+//	public Order(long id, Item item, int amount, OrderLine orderline, boolean complete) {
+//		super();
+//		this.id = id;
+//		this.item = item;
+//		this.amount = amount;
+//		this.orderline = orderline;
+//		this.complete = complete;
+//	}
 
-	public Order(Item item, int amount, OrderLine orderline, boolean complete) {
+	public Order(int amount, boolean complete, Item item, OrderLine orderline) {
 		super();
 		this.item = item;
 		this.amount = amount;

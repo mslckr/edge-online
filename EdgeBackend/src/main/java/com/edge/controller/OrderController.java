@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edge.dto.OrderConfirmationDTO;
-
+import com.edge.dto.OrderDTO;
 import com.edge.dto.OrderLineDTO;
-
+import com.edge.model.Order;
 import com.edge.service.OrderService;
 
 @RestController
@@ -27,6 +27,11 @@ public class OrderController {
 	@GetMapping("/orders")
 	private ResponseEntity<List<OrderLineDTO>> getAllOrders(){
 		List<OrderLineDTO> all=orderService.fetchAllOrderLines();
+		return ResponseEntity.ok().body(all);
+	}
+	@GetMapping("/order")
+	private ResponseEntity<List<OrderDTO>> getAllOrder(){
+		List<OrderDTO> all=orderService.fetchAllOrders();
 		return ResponseEntity.ok().body(all);
 	}
 	

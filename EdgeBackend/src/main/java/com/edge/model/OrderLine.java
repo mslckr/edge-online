@@ -1,6 +1,7 @@
 package com.edge.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -28,7 +29,7 @@ public class OrderLine implements Serializable{
 	@Column(name="user_card_num")
 	private String user_card_no;
 	private int user_card_sec;
-	private String user_card_expdate;	//yyyy-mm-dd format
+	private Date user_card_expdate;	//yyyy-mm-dd format
 	private int auth_code;
 	
 	@OneToMany(mappedBy = "orderline")
@@ -71,10 +72,10 @@ public class OrderLine implements Serializable{
 	public void setUser_card_sec(int user_card_sec) {
 		this.user_card_sec = user_card_sec;
 	}
-	public String getUser_card_expdate() {
+	public Date getUser_card_expdate() {
 		return user_card_expdate;
 	}
-	public void setUser_card_expdate(String user_card_expdate) {
+	public void setUser_card_expdate(Date user_card_expdate) {
 		this.user_card_expdate = user_card_expdate;
 	}
 	public int getAuth_code() {
