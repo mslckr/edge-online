@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="orderline")
@@ -32,6 +34,7 @@ public class OrderLine implements Serializable{
 	private Date user_card_expdate;	//yyyy-mm-dd format
 	private int auth_code;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "orderline")
 	private Set<Order> orders;
 
@@ -87,12 +90,12 @@ public class OrderLine implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-//	public Set<Order> getOrders() {
-//		return orders;
-//	}
-//	public void setOrders(Set<Order> orders) {
-//		this.orders = orders;
-//	}
+	public Set<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
 	
 	
 }

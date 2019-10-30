@@ -3,14 +3,12 @@ package com.edge.dto;
 import javax.validation.constraints.NotNull;
 
 import com.edge.model.Item;
-import com.edge.model.OrderLine;
 
 public class OrderDTO {
 
 	@NotNull
 	private Item item;
 	private int amount;
-	private OrderLine orderline;
 	private boolean complete= false;
 	
 	public int getAmount() {
@@ -32,12 +30,6 @@ public class OrderDTO {
 	}
 	public void setItem(Item item) {
 		this.item = item;
-	}
-	public OrderLine getOrderline() {
-		return orderline;
-	}
-	public void setOrderline(OrderLine orderline) {
-		this.orderline = orderline;
 	}
 	
 }

@@ -71,19 +71,6 @@ public class OrderLineDTO {
 	public void setAuth_code(int auth_code) {
 		this.auth_code = auth_code;
 	}
-//	public OrderConfirmationDTO getConfirmation() {
-//		return confirmation;
-//	}
-//	public void setConfirmation(OrderConfirmationDTO confirmation) {
-//		this.confirmation = confirmation;
-//	}
-//	public CheckoutDTO getPayment() {
-//		return payment;
-//	}
-//	public void setPayment(CheckoutDTO payment) {
-//		this.payment = payment;
-//	}
-
 	public CartDTO getCart() {
 		return cart;
 	}
