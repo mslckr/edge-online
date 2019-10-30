@@ -1,10 +1,7 @@
-import { Cart } from './cart.model';
+import { Cart, CartItem } from './cart.model';
 
 export class Payment {
-  constructor(public cardNumber: string,
-    public cardSecurityCode: string,
-  public cardExpiry_m: string,
-  public cardExpiry_y: string){}
+  constructor(){}
 }
 export class OrderConfirmation {
   orderId: number;
@@ -16,12 +13,13 @@ export class Order{
 }
 export class OrderLine {
   public orderId: number;
-  public name: string;
-  public address: string;
-  public payment: Payment;
+  public user_name: string;
+  public user_address: string;
+  public user_card_no: string;
+  public user_card_sec: number;
+  public user_card_expdate: string
   public order_stage: number=10;
   public auth_code: number;
   public cart: Cart;
-  public orderConfirmation: OrderConfirmation;
   }
 

@@ -68,7 +68,7 @@ export class DataService {
       price: item.price, stock: item.stock, rating: item.rating,
       provider: item.provider ? item.provider.providerId : 0
     };*/
-    return this.http.put(this.constants.itemsUrl + '/' + item.itemId, item );
+    return this.http.put(this.constants.itemsUrl + '/' + item.id, item );
   }
 
   replaceProvider(prov: Provider) {
@@ -107,9 +107,9 @@ export class DataService {
 
   createOrder(order: OrderLine) {
     return this.http.post<any>(this.constants.ordersUrl, {
-      name: order.name,
-      address: order.address,
-      payment: order.payment
+      user_name: order.user_name,
+      user_address: order.user_address,
+      
     }, { withCredentials: true });
   }
    /* .subscribe(data => {

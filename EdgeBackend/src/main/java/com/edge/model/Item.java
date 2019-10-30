@@ -103,5 +103,12 @@ public class Item implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", item_name=" + item_name + ", item_cat=" + item_cat + ", item_price=" + item_price
+				+ ", item_img=" + item_img + ", item_rating=" + item_rating + ", item_stock=" + item_stock
+				+ ", provider=" + provider + "]";
+	}
 	
 }

@@ -38,13 +38,13 @@ export class CatalogComponent implements OnInit {
     this.dataService.getAllItems().subscribe(data => {
       data.forEach(i => {
         var item = new Item();
-        item.itemId = i.id;
-        item.name = i.item_name;
-        item.category = i.item_cat;
-        item.price = i.item_price;
-        item.image = i.item_img;
-        item.rating = i.item_rating;
-        item.stock = i.item_stock;
+        item.id = i.id;
+        item.item_name = i.item_name;
+        item.item_cat = i.item_cat;
+        item.item_price = i.item_price;
+        item.item_img = i.item_img;
+        item.item_rating = i.item_rating;
+        item.item_stock = i.item_stock;
         item.provider = new Provider(
           i.provider.id, 
           i.provider.prov_name, 

@@ -11,8 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -22,11 +25,12 @@ public class Order implements Serializable{
 	private long id;
 
 	@OneToOne
-	@JoinColumn(name="item_id")
+	@JoinColumn(name = "item_id")
 	private Item item;
 	
 	private int amount;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="orderline_id")
 	private OrderLine orderline;
@@ -36,16 +40,16 @@ public class Order implements Serializable{
 	public Order() {}
 	
 
-	public Order(long id, Item item, int amount, OrderLine orderline, boolean complete) {
-		super();
-		this.id = id;
-		this.item = item;
-		this.amount = amount;
-		this.orderline = orderline;
-		this.complete = complete;
-	}
+//	public Order(long id, Item item, int amount, OrderLine orderline, boolean complete) {
+//		super();
+//		this.id = id;
+//		this.item = item;
+//		this.amount = amount;
+//		this.orderline = orderline;
+//		this.complete = complete;
+//	}
 
-	public Order(Item item, int amount, OrderLine orderline, boolean complete) {
+	public Order(int amount, boolean complete, Item item, OrderLine orderline) {
 		super();
 		this.item = item;
 		this.amount = amount;

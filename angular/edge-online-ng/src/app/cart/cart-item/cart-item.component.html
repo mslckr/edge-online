@@ -1,13 +1,13 @@
 <div class="container-fluid cartItem-container">
     <div class="row py-3">
         <div class="col-sm-12 col-md-4">
-            <img src="../../../assets/{{cartItem.image}}" class="img-fluid">
+            <img src="../../../assets/{{cartItem.item.item_img}}" class="img-fluid">
         </div>
         <div class="col-sm-12 col-md-7">
-                <div class="cartItem-name mb-2"><p>{{cartItem.name}} </p></div>
+                <div class="cartItem-name mb-2"><p>{{cartItem.item.item_name}} </p></div>
             <div class="price-block"> 
                 <div class="row px-5 py-2">
-                <span class="col">{{cartItem.price | currency}} x {{cartItem.quantity}}</span>
+                <span class="col">{{cartItem.item.item_price | currency}} x {{cartItem.quantity}}</span>
                 <button class="btn btn-danger col" (click)="removeCartItem()" *ngIf="page =='Cart'">Remove</button>
                 <span class="col" *ngIf="page =='Checkout'"> = {{cartItem.total_amount | currency}}</span>
                 </div>

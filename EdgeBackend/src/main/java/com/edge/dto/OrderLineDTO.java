@@ -1,6 +1,11 @@
 package com.edge.dto;
 
+import java.sql.Date;
+import java.util.Set;
+
 import javax.validation.constraints.NotNull;
+
+import com.edge.model.Order;
 
 
 public class OrderLineDTO {
@@ -12,11 +17,11 @@ public class OrderLineDTO {
 	private int order_stage;
 	private String user_card_no;
 	private int user_card_sec;
-	private String user_card_expdate;	//yyyy-mm-dd format
-	CheckoutDTO payment;
+	private Date user_card_expdate;	//yyyy-mm-dd format
 	private int auth_code;
+	private Set<Order> orders;
 	private CartDTO cart;
-	private OrderConfirmationDTO confirmation;
+	//private OrderConfirmationDTO confirmation;
 	
 	public int getId() {
 		return id;
@@ -54,10 +59,10 @@ public class OrderLineDTO {
 	public void setUser_card_sec(int user_card_sec) {
 		this.user_card_sec = user_card_sec;
 	}
-	public String getUser_card_expdate() {
+	public Date getUser_card_expdate() {
 		return user_card_expdate;
 	}
-	public void setUser_card_expdate(String user_card_expdate) {
+	public void setUser_card_expdate(Date user_card_expdate) {
 		this.user_card_expdate = user_card_expdate;
 	}
 	public int getAuth_code() {
@@ -66,24 +71,17 @@ public class OrderLineDTO {
 	public void setAuth_code(int auth_code) {
 		this.auth_code = auth_code;
 	}
-	public OrderConfirmationDTO getConfirmation() {
-		return confirmation;
-	}
-	public void setConfirmation(OrderConfirmationDTO confirmation) {
-		this.confirmation = confirmation;
-	}
-	public CheckoutDTO getPayment() {
-		return payment;
-	}
-	public void setPayment(CheckoutDTO payment) {
-		this.payment = payment;
-	}
-
 	public CartDTO getCart() {
 		return cart;
 	}
 	public void setCart(CartDTO cart) {
 		this.cart = cart;
+	}
+	public Set<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 	
 	

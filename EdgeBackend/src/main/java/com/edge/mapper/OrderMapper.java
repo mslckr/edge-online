@@ -11,7 +11,7 @@ public class OrderMapper {
 		Order order= new Order();
 		
 		order.setItem(dto.getItem());
-		order.setOrderline(dto.getOrderline());
+		//order.setOrderline(dto.getOrderline());
 		order.setAmount(dto.getAmount());
 		order.setComplete(dto.isComplete());
 		
@@ -21,7 +21,7 @@ public class OrderMapper {
 	public OrderDTO toDto(Order entity) {
 		OrderDTO dto =new OrderDTO();
 		dto.setItem(entity.getItem());
-		dto.setOrderline(entity.getOrderline());
+		//dto.setOrderline(entity.getOrderline());
 		dto.setAmount(entity.getAmount());
 		dto.setComplete(entity.isComplete());
 		return dto;

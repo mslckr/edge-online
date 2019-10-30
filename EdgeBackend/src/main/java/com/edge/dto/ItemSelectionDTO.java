@@ -1,46 +1,22 @@
 package com.edge.dto;
 
+import com.edge.model.Item;
+
 public class ItemSelectionDTO {
 	
-	private long item_id;
-	private String name;
-	private double price;
+	private Item item;
 	private int quantity;
+	private double total_amount;
 	
 	public ItemSelectionDTO() {
 		
 	}
 	
-	public ItemSelectionDTO(long item_id, String name, double price, int quantity) {
+	
+	public ItemSelectionDTO(Item item, String name, int quantity) {
 		super();
-		this.item_id = item_id;
-		this.name = name;
-		this.price = price;
+		this.setItem(item);
 		this.quantity = quantity;
-	}
-
-	public long getItem_id() {
-		return item_id;
-	}
-
-	public void setItem_id(long item_id) {
-		this.item_id = item_id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 	public int getQuantity() {
@@ -49,6 +25,31 @@ public class ItemSelectionDTO {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+
+	public double getTotal_amount() {
+		return total_amount;
+	}
+
+
+	public void setTotal_amount(double total_amount) {
+		this.total_amount = total_amount;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ItemSelectionDTO [item=" + item + ", quantity=" + quantity + ", total_amount="
+				+ total_amount + "]";
 	}
 	
 	

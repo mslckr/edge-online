@@ -1,29 +1,32 @@
 package com.edge.dto;
 
+import java.util.List;
+
 public class CartDTO {
 	
-	private ItemSelectionDTO[] selections;
-	private int itemCount;
-	private double totalPrice;
+	private List<ItemSelectionDTO> cartItems;
+	private int quantity;
+	private double Total;
 	
-	public ItemSelectionDTO[] getSelections() {
-		return selections;
+	public List<ItemSelectionDTO> getCartItems() {
+		return cartItems;
 	}
-	public void setSelections(ItemSelectionDTO[] selections) {
-		this.selections = selections;
+	public void setCartItems(List<ItemSelectionDTO> cartItems) {
+		this.cartItems = cartItems;
 	}
-	public int getItemCount() {
-		return itemCount;
+	public int getQuantity() {
+		return quantity;
 	}
-	public void setItemCount(int itemCount) {
-		this.itemCount = itemCount;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
-	public double getTotalPrice() {
-		return totalPrice;
+	public double getTotal() {
+		return Total;
 	}
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setTotal(double Total) {
+		this.Total=Total;
 	}
+//
 	
 
 }

@@ -1,6 +1,7 @@
 package com.edge.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -28,9 +31,10 @@ public class OrderLine implements Serializable{
 	@Column(name="user_card_num")
 	private String user_card_no;
 	private int user_card_sec;
-	private String user_card_expdate;	//yyyy-mm-dd format
+	private Date user_card_expdate;	//yyyy-mm-dd format
 	private int auth_code;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "orderline")
 	private Set<Order> orders;
 
@@ -71,10 +75,10 @@ public class OrderLine implements Serializable{
 	public void setUser_card_sec(int user_card_sec) {
 		this.user_card_sec = user_card_sec;
 	}
-	public String getUser_card_expdate() {
+	public Date getUser_card_expdate() {
 		return user_card_expdate;
 	}
-	public void setUser_card_expdate(String user_card_expdate) {
+	public void setUser_card_expdate(Date user_card_expdate) {
 		this.user_card_expdate = user_card_expdate;
 	}
 	public int getAuth_code() {
@@ -86,12 +90,12 @@ public class OrderLine implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-//	public Set<Order> getOrders() {
-//		return orders;
-//	}
-//	public void setOrders(Set<Order> orders) {
-//		this.orders = orders;
-//	}
+	public Set<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
 	
 	
 }

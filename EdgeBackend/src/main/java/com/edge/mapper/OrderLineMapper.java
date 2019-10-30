@@ -18,6 +18,8 @@ public class OrderLineMapper {
 		dto.setUser_card_expdate(entity.getUser_card_expdate());
 		dto.setUser_card_no(entity.getUser_card_no());
 		dto.setUser_card_sec(entity.getUser_card_sec());
+		dto.setOrders(entity.getOrders());
+		
 		return dto;
 	}
 	
@@ -31,7 +33,9 @@ public class OrderLineMapper {
 		orderline.setUser_card_expdate(dto.getUser_card_expdate());
 		orderline.setUser_card_no(dto.getUser_card_no());
 		orderline.setUser_card_sec(dto.getUser_card_sec());
+		orderline.setOrders(dto.getOrders());
 		
 		return orderline;
 	}
+		
 }
