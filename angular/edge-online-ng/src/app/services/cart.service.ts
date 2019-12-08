@@ -29,7 +29,7 @@ export class CartService {
     
     this.cart = this.getCart();
     let cartItem = new CartItem(addedItem);
-    console.log(cartItem.item);
+
     //if item is not in cart then add it to the cart
     let cartItemIdx = this.cart.cartItems.findIndex((i: CartItem) => i.item.id== cartItem.item.id)
     if(cartItemIdx == -1){
